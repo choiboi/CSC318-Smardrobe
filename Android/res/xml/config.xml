@@ -57,7 +57,7 @@
     <plugin name="InAppBrowser" value="org.apache.cordova.InAppBrowser"/>
 </plugins>
 <widget>
-    <content src="index.html"/>
+    <content src="smardrobe.html"/>
 </widget>
 </cordova>
 
