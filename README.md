@@ -15,6 +15,12 @@ In this project we will not branching out and instead use the default `master` b
 
 When committing, please do not commit `/bin` files and hidden mac files (for example `.DS_STORE`). If you do, you can easily remove it by using the commands below. My useful TIP is to use `$ git status` command when committing and/or adding.
 
+### Project Folder Structure
+* `Android` folder contains all the source code for the Android application. These code will be rarely used, and only be touched to try the application on Android. It can be easily imported into ADT.
+* `Webpages` folder will contain our project work and `Webpages` root folder will contains all our html files.
+* `Webpages/js-framework` and `Webpages/css-framework` contains all the open source files (for example jQuery) that will be used for this project.
+* `Webpages/css` and `Webpages/js` contains all the css and js files that we create for this project.
+
 ### Some Commands
 To clone the repository use this command in the directory where you want the folder to be located:
 
