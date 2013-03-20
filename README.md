@@ -13,6 +13,9 @@ If this is the first using please look into this wiki page: [Getting Setup](http
 
 In this project we will not branching out and instead use the default `master` branch. Since, we are only using the `master` branch this will be like SVN where we will have conflicts if one does not update their local branch before committing. Therefore, I suggest people to notify every team members via Facebook group page or any other form of communication that you made changes and it has been pushed into the repository. 
 
+When committing, please do not commit `/bin` files and hidden mac files (for example `.DS_STORE`). If you do, you can easily remove it by using the commands below. My useful TIP is to use `$ git status` command when committing and/or adding.
+
+### Some Commands
 To clone the repository use this command in the directory where you want the folder to be located:
 
     $ git clone git@github.com:choiboi/CSC318-Smardrobe.git
