@@ -12,13 +12,11 @@ root {
 
 #head
 {
-	background-color: blue;
 	width: 100%;
 }
 
 #main
 {
-	background-color:#b0c4de;
 	float: left
 }
 
@@ -34,7 +32,10 @@ root {
 	float: left;
 	width: 44%;
 	margin-left: 3%;
+	text-align:center;
+	color:white;
 }
+
 	
 #h3
 {
