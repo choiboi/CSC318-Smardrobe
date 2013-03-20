@@ -1,0 +1,44 @@
+/* 
+    Document   : Example CSS
+    Created on : 20-Mar-2013, 2:31:22 PM
+    Author     : Xiao
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+#head
+{
+	background-color: blue;
+	width: 100%;
+}
+
+#main
+{
+	background-color:#b0c4de;
+	float: left
+}
+
+#h1
+{
+	float: left;
+	width: 22%;
+	margin-left: 3%;
+}
+
+#h2
+{
+	float: left;
+	width: 44%;
+	margin-left: 3%;
+}
+	
+#h3
+{
+	float: left;
+	width: 22%;
+	margin-left: 3%;
+}
