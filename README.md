@@ -7,6 +7,15 @@ University of Toronto CSC318-The Design of Interactive Computational Media cours
 
 This is a mobile application where it will help users decide what to wear for the day. Users will be able to store photos of their clothes into the application database and using these photos, the application will create a matching outfit from this database. Users can favourite their outfits, and Edit or delete existing clothes stored in the application.
 
+Testing
+-------
+### Testing on Android
+1. Copy all files in `Webpages` folder into assets --> www in ADT if you look into Package Explorer.
+2. Deploy simulator or deploy into to device.
+
+### Testing on Browser
+1. This can be test on your browser by just opening one of the html files. **NOTE: ** That some functionality like camera may not work.
+
 Contributing to this Project
 ----------------------
 If this is the first using please look into this wiki page: [Getting Setup](https://github.com/choiboi/CSC318-Smardrobe/wiki/Getting-Setup). These are instruction on getting you guys setup to use Github and Android Development.
