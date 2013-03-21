@@ -1,10 +1,39 @@
+var pageNumber = 0;
+var filterOptions = [];
+var selectedImage;
+var images = [];
 
+function initializer(filterOps, image, imageRange) {
 
-function initializer(filterOps, selectedImage) {
     
+    selectedImage = image;
+    for (var i = 0; i < filterOps.length; i++) { 
+        
+    }
+    
+    for (i = imageRange[0]; i < imageRange[1]; i++) { 
+        
+    }
     
 }
 
+function imageListDisplay (images) {
+    for (var i = 0; i < images.length; i++) { 
+        writeImage(images[i]);
+    }
+}
+
 function writeImage (imageName) {
-    document.write('<img src="' + imageName + '" alt="Clothing image">');
+    document.write('<img src="images/' + imageName + '" alt="Clothing image" onclick="zoomIn(' + imageName + ')">');
+}
+
+function zoomIn(imageName) {
+    var backButton = document.getElementById("backButton");
+    backButton.href="wardrobe.html"
+    backButton.onclick="loadBack()";
+  
+}
+
+function loadBack() {
+    
 }
