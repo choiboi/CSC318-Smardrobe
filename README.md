@@ -3,7 +3,7 @@ CSC318 Project - Smardrobe
 
 Introduction
 ------------
-University of Toronto CSC318-The Design of Interactive Computational Media course project.
+University of Toronto CSC318 - The Design of Interactive Computational Media (Introduction to Human-Computer Interaction).
 
 This is a mobile application where it will help users decide what to wear for the day. Users will be able to store photos of their clothes into the application database and using these photos, the application will create a matching outfit from this database. Users can favourite their outfits, and Edit or delete existing clothes stored in the application.
 
@@ -11,7 +11,7 @@ Testing
 -------
 ### Testing on Android
 1. Copy all files in `Webpages` folder into assets --> www in ADT if you look into Package Explorer.
-2. Deploy simulator or deploy into to device.
+2. Deploy simulator or deploy into device.
 
 ### Testing on Browser
 1. This can be test on your browser by just opening one of the html files. **NOTE:** That some functionality like camera may not work.
@@ -22,10 +22,10 @@ If this is your first time using github or Android Development, please take a lo
 
 In this project we will not branching out and instead use the default `master` branch. Since, we are only using the `master` branch this will be like SVN where we will have conflicts if one does not update their local branch before committing. Therefore, I suggest people to notify every team members via Facebook group page or any other form of communication that you made changes and it has been pushed into the repository. 
 
-When committing, please do not commit `/bin` files and hidden mac files (for example `.DS_STORE`). If you do, you can easily remove it by using the commands below. My useful TIP is to use `$ git status` command when committing and/or adding.
+When committing, please do not commit `/bin` files and hidden mac files (for example `.DS_STORE`). If you do, you can easily remove it by using the commands below. My useful **tip** is to use `$ git status` command when committing and/or adding.
 
 ### Project Folder Structure
-* `Android` folder contains all the source code for the Android application. These code will be rarely used, and only be touched to try the application on Android. It can be easily imported into ADT.
+* `Android` folder contains all the source code for the Android application. These code will be rarely used, and only to be touched to try the application on Android. It can be easily imported into ADT.
 * `Webpages` folder will contain our project work and `Webpages` root folder will contains all our html files.
 * `Webpages/js-framework` and `Webpages/css-framework` contains all the open source files (for example jQuery) that will be used for this project.
 * `Webpages/css` and `Webpages/js` contains all the css and js files that we create for this project.
