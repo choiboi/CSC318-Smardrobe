@@ -35,6 +35,7 @@ var requestWeather = function(latitude, longitude) {
 
 // Called upon succesfully retrieving the weather data.
 var weatherOnSuccess = function(jsonParsed) {
+    // Get the necessary info from the JSON object.
     var location = jsonParsed['location']['city'] + ", " + jsonParsed['location']['country_name'];
     var weather = jsonParsed['current_observation']['weather'];
     var temp = jsonParsed['current_observation']['temp_c'] + " C";
@@ -42,11 +43,15 @@ var weatherOnSuccess = function(jsonParsed) {
                 jsonParsed['current_observation']['wind_dir'];
     var feelsLike = jsonParsed['current_observation']['feelslike_c'] + " C";
     var weatherIcon = jsonParsed['current_observation']['icon_url'];
-    
-    alert(location + "\n" +
-            weather + "\n" +
-            temp + "\n" +
-            wind + "\n" +
-            feelsLike + "\n" +
-            weatherIcon + "\n");
+
+    var weatherText = 
+                weather + "<br>" +
+                "Current Temp.: " + temp + "<br>" +
+                "Feels Like: " + feelsLike + "<br>" +
+                "Winds: " + wind;
+
+    // Display it on screen.
+    $('#currLocation').html('<b>' + location + '</b>');
+    $('#weatherIcon').attr('src', weatherIcon);
+    $('#weatherInfoText').html(weatherText);
 };
