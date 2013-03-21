@@ -14,7 +14,7 @@ Testing
 2. Deploy simulator or deploy into to device.
 
 ### Testing on Browser
-1. This can be test on your browser by just opening one of the html files. **NOTE: ** That some functionality like camera may not work.
+1. This can be test on your browser by just opening one of the html files. **NOTE:** That some functionality like camera may not work.
 
 Contributing to this Project
 ----------------------
