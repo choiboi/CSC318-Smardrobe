@@ -18,7 +18,7 @@ Testing
 
 Contributing to this Project
 ----------------------
-If this is the first using please look into this wiki page: [Getting Setup](https://github.com/choiboi/CSC318-Smardrobe/wiki/Getting-Setup). These are instruction on getting you guys setup to use Github and Android Development.
+If this is your first time using github or Android Development, please take a look into this wiki page: [Getting Setup](https://github.com/choiboi/CSC318-Smardrobe/wiki/Getting-Setup). These are instruction on getting you guys setup to use Github and Android Development.
 
 In this project we will not branching out and instead use the default `master` branch. Since, we are only using the `master` branch this will be like SVN where we will have conflicts if one does not update their local branch before committing. Therefore, I suggest people to notify every team members via Facebook group page or any other form of communication that you made changes and it has been pushed into the repository. 
 
