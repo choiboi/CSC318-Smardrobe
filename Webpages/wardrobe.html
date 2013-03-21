@@ -1,54 +1,50 @@
 <!DOCTYPE html>
-    <html>
-        <head>
-            <title>Smardrobe</title>
-            <meta charset="utf-8"/>
-            <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=no"/>
-            <link rel="stylesheet" type="text/css" href="css/wardrobe.css">
-            <link rel="stylesheet" href="css-framework/jquery.mobile.structure-1.3.0.min.css"/>
-            <link rel="stylesheet" href="css-framework/jquery.mobile.theme-1.3.0.min.css"/>	
-            <script type="text/javascript" src="js-framework/jquery-1.9.1.min.js"></script>
-            <script type="text/javascript" src="js-framework/jquery.mobile-1.3.0.min.js"></script>
-        </head>
+<html>
+    <head>
+        <title>Smardrobe</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=no"/>
+        <link rel="stylesheet" type="text/css" href="css/wardrobe.css">
+        <link rel="stylesheet" href="css-framework/jquery.mobile.structure-1.3.0.min.css"/>
+        <link rel="stylesheet" href="css-framework/jquery.mobile.theme-1.3.0.min.css"/>	
+        <script type="text/javascript" src="js-framework/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="js-framework/jquery.mobile-1.3.0.min.js"></script>
+    </head>
 
-        <body class="ui-mobile-viewport">
-            <div data-role="page" id="wardrobe" data-theme="a">
-                <div data-role="header" data-theme="a">
-                     
+    <body class="ui-mobile-viewport">
+        <div data-role="page" id="wardrobe" data-theme="a">
+            <div data-role="header" data-theme="a">
 
-                            <a href="smardrobe.html" data-role="button">Back</a>
+                <a href="smardrobe.html" data-role="button">Back</a>
 
-                    
-                    <h4>
-                        
-                        Wardrobe
-                        
-                    </h4>
-                    
-
-                            <a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true">Filter</a>
-
-                            <div data-role="popup" id="popupMenu" data-theme="a">
-                                <ul data-role="listview" data-inset="true" style="min-width:210px;" data-theme="b">
-                                    <li data-role="divider" data-theme="a">Popup API</li>
-                                    <li><a href="options.html">Options</a></li>
-                                    <li><a href="methods.html">Methods</a></li>
-                                    <li><a href="events.html">Events</a></li>
-                                </ul>
-                            </div>
+                <h4>
+                    Wardrobe
+                </h4>
 
 
-                </div>
+                <a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true">Filter</a>
 
-                <div id="main" data-role="content">	
-                    <p>Hello world</p>		
-                </div>
-
-                <div data-role="footer" data-position="fixed" data-theme="a">
-                    <a href="#delete" data-role="button">Delete</a>
+                <div data-role="popup" id="popupMenu" data-theme="a">
+                    <ul data-role="listview" data-inset="true" style="min-width:210px;" data-theme="a">
+                        <li data-role="divider" data-theme="a">Filter</li>
+                        <li><a href="options.html">Options</a></li>
+                        <li><a href="methods.html">Methods</a></li>
+                        <li><a href="events.html">Events</a></li>
+                    </ul>
                 </div>
             </div>
 
+            <div id="main" data-role="content">	
+                <div class="ui-grid-d my-breakpoint">
+                    <script>wardrobeLoader.js</script>
+                </div>	
+            </div>
 
-        </body>
-    </html>
+            <div data-role="footer" data-position="fixed" data-theme="a">
+                <a href="#delete" data-role="button">Delete</a>
+            </div>
+        </div>
+
+
+    </body>
+</html>
