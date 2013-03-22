@@ -16,12 +16,12 @@
 
 #divIcon {
 	float: left;
-	padding-right: 5%;
+	padding-right: 4%;
 }
 
 #divLocation {
 	float: left;
-	padding-right: 5%;
+	padding-right: 3%;
 	margin-top: -4%;
 	margin-bottom: -5%;
 }
@@ -44,5 +44,5 @@
 #weatherInfo {
 	float: left;
 	margin-left: -4%;
-	margin-top: -5%;
+	margin-top: -3%;
 }
