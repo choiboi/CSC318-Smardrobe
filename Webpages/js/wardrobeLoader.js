@@ -29,9 +29,10 @@ function writeImage (imageName) {
 
 function zoomIn(imageName) {
     var backButton = document.getElementById("backButton");
-    backButton.href="wardrobe.html"
-    backButton.onclick="loadBack()";
+    backButton.href = "";
+    backButton.onclick = "loadBack()";
   
+    
 }
 
 function loadBack() {
