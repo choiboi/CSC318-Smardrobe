@@ -5,3 +5,32 @@
 #fav {
 	width: 33%
 }
+
+#currLocation {
+	font-size: 120%;
+}
+
+#divLocation {
+	float: left;
+	margin-top: -4%;
+	margin-bottom: -5%
+}
+
+#divIcon {
+	float: left;
+	padding-right: 5%;
+}
+
+#divMain {
+	float:left;
+	width: 100%;
+	top: 7%;
+	margin-left: -4%;
+	margin-top: -6%;
+}
+
+#weatherInfo {
+	float: left;
+	margin-left: -4%;
+	margin-top: -6%;
+}
