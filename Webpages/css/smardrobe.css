@@ -3,7 +3,7 @@
 }
 
 #fav {
-	width: 33%
+	width: 32%
 }
 
 #currLocation {
@@ -38,11 +38,11 @@
 	top: 6%;
 	margin-left: -4%;
 	margin-top: -6%;
-	margin-bottom: -4%;
+	margin-bottom: -5%;
 }
 
 #weatherInfo {
 	float: left;
 	margin-left: -4%;
-	margin-top: -3%;
+	margin-top: -4%;
 }
