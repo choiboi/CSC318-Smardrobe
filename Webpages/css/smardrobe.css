@@ -10,10 +10,8 @@
 	font-size: 120%;
 }
 
-#divLocation {
-	float: left;
-	margin-top: -4%;
-	margin-bottom: -5%
+#weatherTemp {
+	font-size: 250%;
 }
 
 #divIcon {
@@ -21,16 +19,30 @@
 	padding-right: 5%;
 }
 
+#divLocation {
+	float: left;
+	padding-right: 5%;
+	margin-top: -4%;
+	margin-bottom: -5%;
+}
+
+#divTemp {
+	float: left;
+	margin-top: -10%;
+	margin-bottom: -10%;
+}
+
 #divMain {
 	float:left;
 	width: 100%;
-	top: 7%;
+	top: 6%;
 	margin-left: -4%;
 	margin-top: -6%;
+	margin-bottom: -4%;
 }
 
 #weatherInfo {
 	float: left;
 	margin-left: -4%;
-	margin-top: -6%;
+	margin-top: -5%;
 }

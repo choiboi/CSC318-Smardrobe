@@ -45,13 +45,13 @@ var weatherOnSuccess = function(jsonParsed) {
     var weatherIcon = "http://icons-ak.wxug.com/i/c/k/partlycloudy.gif";//jsonParsed['current_observation']['icon_url'];
 
     var weatherText = 
-                weather + "<br>" +
-                "Current Temp.: " + temp + "<br>" +
-                "Feels Like: " + feelsLike + "<br>" +
-                "Winds: " + wind;
+                "<b>" + "Wind " + wind +  "<br>" +
+                "Feels Like " + feelsLike + "<br>" +
+                "<b>" + weather + "</b>";
 
     // Display it on screen.
     $('#currLocation').html('<b>' + location + '</b>');
     $('#weatherIcon').attr('src', weatherIcon);
+    $('#weatherTemp').html('<b>' + temp + '</b>');
     $('#weatherInfoText').html(weatherText);
 };
