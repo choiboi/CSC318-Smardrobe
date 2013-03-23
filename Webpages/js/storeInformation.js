@@ -1,4 +1,40 @@
 //
+// This function adds a set of clothes, which users have
+// favourited, in the database which a uniquely created
+// key value.
+//
+// @param clothes - an array of clothes filenames.
+//
+var addFavorite = function(clothes) {
+    var favsLocal = jQuery.parseJSON(localStorage[storageKeys.favs]);
+
+    // Create new key that is not in the database already.
+    var ID = storageKeys.makeId();
+    while (typeof favsLocal[ID] !== "undefined") {
+        ID = storageKeys.makeId();
+    }
+
+    favsLocal[ID] = clothes;
+    localStorage[storageKeys.favs] = JSON.stringify(favsLocal);
+};
+
+//
+// This function removes the specified favourite outfit using
+// the provided ID value.
+//
+// @param ID - unique ID assigned to each favourites.
+//
+var deleteFavourite = function(ID) {
+    var favsLocal = jQuery.parseJSON(localStorage[storageKeys.favs]);
+
+    // Remove element with the key value ID.
+    if (typeof favsLocal[ID] !== "undefined") {
+        delete favsLocal[ID];
+        localStorage[storageKeys.favs] = JSON.stringify(favsLocal);
+    }
+};
+
+//
 // This function adds new tags into our database. If the tag is already
 // in the database, then it is ignored.
 //
@@ -140,7 +176,7 @@ var retrieveClothingByTag = function(tag) {
 
 $(document).ready(function() {
     storageKeys = new StorageKeys();
-    localStorage.clear();
+    //localStorage.clear();
 
     //Initiate storage on first app start.
     if (typeof localStorage[storageKeys.tags] === "undefined") {
@@ -153,21 +189,21 @@ $(document).ready(function() {
         localStorage[storageKeys.favs] = JSON.stringify({});
     }
 
-    addNewTag('tag');
-    addNewTag('tag2');
-    addNewTag(['ui', 'op']);
-    addNewTag(new Array('hj', 'kl'));
+    // addNewTag('tag');
+    // addNewTag('tag2');
+    // addNewTag(['ui', 'op']);
+    // addNewTag(new Array('hj', 'kl'));
 
-    addNewClothes('pic1');
-    addNewClothes('pic2');
-    addNewClothes(['pic3', 'pic4']);
-    addNewClothes(new Array('pic5', 'pic6'));
+    // addNewClothes('pic1');
+    // addNewClothes('pic2');
+    // addNewClothes(['pic3', 'pic4']);
+    // addNewClothes(new Array('pic5', 'pic6'));
 
-    associateTagClothes('tag', 'pic1');
-    associateTagClothes('ui', 'pic2');
-    associateTagClothes('randomTag', 'pic6');
-    associateTagClothes('hj', 'randomPic');
-    associateTagClothes('ui', 'pic3');
+    // associateTagClothes('tag', 'pic1');
+    // associateTagClothes('ui', 'pic2');
+    // associateTagClothes('randomTag', 'pic6');
+    // associateTagClothes('hj', 'randomPic');
+    // associateTagClothes('ui', 'pic3');
 
     // alert(retrieveTagsByClothing('pic2'));
     // alert(retrieveClothingByTag('ui'));
@@ -175,12 +211,30 @@ $(document).ready(function() {
     // removeAssociation('ui', 'pic1');
     // removeAssociation('ui', 'pic2');
     // removeAssociation('hj', 'randomPic');
+
+    // addFavorite(['c1', 'c2', 'c3']);
+    // addFavorite(['a1', 'a2', 'a3']);
 });
 
+//
+// This is a separate class to store keys for localStorage
+// and function for generating IDs.
+//
 function StorageKeys() {
     this.tags = "tags";
     this.clothes = "clothes";
     this.favs = "favs";
+
+    // This function was from:
+    // http://stackoverflow.com/questions/1349404/generate-a-string-of-5-random-characters-in-javascript 
+    this.makeId = function() {
+        var text = "";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        for( var i=0; i < 5; i++ )
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+        return text;
+    };
 }
 var storageKeys;
 
