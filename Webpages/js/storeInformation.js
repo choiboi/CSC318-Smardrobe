@@ -1,15 +1,3 @@
-// 
-// This function retrieves all the associated tags of the specified
-// clothing.
-//
-// @param clothingFilename - filename of the clothing.
-// @return an array of tags.
-//
-var retrieveClothingTags = function(clothingFilename) {
-    var tagsArray = jQuery.parseJSON(localStorage[storageKeys.tags]);
-    return tagsArray.clothingFilename;
-};
-
 //
 // This function adds new tags into our database. If the tag is already
 // in the database, then it is ignored.
@@ -125,6 +113,31 @@ var removeAssociation = function(tag, clothing) {
     }
 };
 
+// 
+// This function retrieves all the associated tags of the specified
+// clothing.
+//
+// @param clothingFilename - filename of the clothing.
+// @return an array of tags.
+//
+var retrieveTagsByClothing = function(clothingFilename) {
+    var clothesLocal = jQuery.parseJSON(localStorage[storageKeys.clothes]);
+    return clothesLocal[clothingFilename]
+    ;
+};
+
+//
+// This function retrieves all the associated clothes with the
+// specified tag.
+//
+// @param tag - tag in string.
+// @return an array of clothes filenames.
+//
+var retrieveClothingByTag = function(tag) {
+    var tagsLocal = jQuery.parseJSON(localStorage[storageKeys.tags]);
+    return tagsLocal[tag];
+};
+
 $(document).ready(function() {
     storageKeys = new StorageKeys();
     localStorage.clear();
@@ -140,21 +153,24 @@ $(document).ready(function() {
         localStorage[storageKeys.favs] = JSON.stringify({});
     }
 
-    // addNewTag('tag');
-    // addNewTag('tag2');
-    // addNewTag(['ui', 'op']);
-    // addNewTag(new Array('hj', 'kl'));
+    addNewTag('tag');
+    addNewTag('tag2');
+    addNewTag(['ui', 'op']);
+    addNewTag(new Array('hj', 'kl'));
 
-    // addNewClothes('pic1');
-    // addNewClothes('pic2');
-    // addNewClothes(['pic3', 'pic4']);
-    // addNewClothes(new Array('pic5', 'pic6'));
+    addNewClothes('pic1');
+    addNewClothes('pic2');
+    addNewClothes(['pic3', 'pic4']);
+    addNewClothes(new Array('pic5', 'pic6'));
 
-    // associateTagClothes('tag', 'pic1');
-    // associateTagClothes('ui', 'pic2');
-    // associateTagClothes('randomTag', 'pic6');
-    // associateTagClothes('hj', 'randomPic');
-    // associateTagClothes('ui', 'pic3');
+    associateTagClothes('tag', 'pic1');
+    associateTagClothes('ui', 'pic2');
+    associateTagClothes('randomTag', 'pic6');
+    associateTagClothes('hj', 'randomPic');
+    associateTagClothes('ui', 'pic3');
+
+    // alert(retrieveTagsByClothing('pic2'));
+    // alert(retrieveClothingByTag('ui'));
 
     // removeAssociation('ui', 'pic1');
     // removeAssociation('ui', 'pic2');
