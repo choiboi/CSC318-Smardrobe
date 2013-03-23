@@ -61,6 +61,34 @@ var addNewTag = function(tag) {
 };
 
 //
+// This function will remove the specified tag from the database.
+//
+// @param tag - tag in string.
+//
+var deleteTag = function(tag) {
+    var tagsLocal = jQuery.parseJSON(localStorage[storageKeys.tags]);
+
+    var tagClothesList = tagsLocal[tag];
+    delete tagsLocal[tag]
+
+    // Get the list of clothes so that for clothes associated with this tag,
+    // we quickly remove this tag from the clothes list of tag.
+    var clothesLocal = jQuery.parseJSON(localStorage[storageKeys.clothes]);
+    for (var ind = 0; ind < tagClothesList.length; ind++) {
+        var tempL = clothesLocal[tagClothesList[ind]];
+        var index = tempL.indexOf(tag);
+
+        if (index >= 0) {
+            tempL.remove(index);
+            clothesLocal[tagClothesList[ind]] = tempL;
+        }
+    }
+
+    localStorage[storageKeys.clothes] = JSON.stringify(clothesLocal);
+    localStorage[storageKeys.tags] = JSON.stringify(tagsLocal);
+};
+
+//
 // This function adds new clothes filenames into our database. If the filename
 // for the clothing is already in the database, then it is ignored.
 //
@@ -84,6 +112,33 @@ var addNewClothes = function(clothesFilename) {
         }
     }
 
+    localStorage[storageKeys.clothes] = JSON.stringify(clothesLocal);
+};
+
+//
+// This function removes the specified clothing from the database.
+//
+// @param clothing - clothing filename in string.
+//
+var deleteClothing = function(clothing) {
+    var clothesLocal = jQuery.parseJSON(localStorage[storageKeys.clothes]);
+
+    var clothesTagList = clothesLocal[clothing];
+    delete clothesLocal[clothing];
+
+    // Remove clothing filename from the tag list of clothes.
+    var tagsLocal = jQuery.parseJSON(localStorage[storageKeys.tags]);
+    for (var ind = 0; ind < clothesTagList.length; ind++) {
+        var tempL = tagsLocal[clothesTagList[ind]];
+        var index = tempL.indexOf(clothing);
+
+        if (index >= 0) {
+            tempL.remove(index);
+            tagsLocal[clothesTagList[ind]] = tempL;
+        }
+    }
+
+    localStorage[storageKeys.tags] = JSON.stringify(tagsLocal);
     localStorage[storageKeys.clothes] = JSON.stringify(clothesLocal);
 };
 
@@ -158,8 +213,7 @@ var removeAssociation = function(tag, clothing) {
 //
 var retrieveTagsByClothing = function(clothingFilename) {
     var clothesLocal = jQuery.parseJSON(localStorage[storageKeys.clothes]);
-    return clothesLocal[clothingFilename]
-    ;
+    return clothesLocal[clothingFilename];
 };
 
 //
@@ -176,7 +230,7 @@ var retrieveClothingByTag = function(tag) {
 
 $(document).ready(function() {
     storageKeys = new StorageKeys();
-    //localStorage.clear();
+    localStorage.clear();
 
     //Initiate storage on first app start.
     if (typeof localStorage[storageKeys.tags] === "undefined") {
@@ -211,6 +265,9 @@ $(document).ready(function() {
     // removeAssociation('ui', 'pic1');
     // removeAssociation('ui', 'pic2');
     // removeAssociation('hj', 'randomPic');
+
+    // deleteTag('ui');
+    // deleteClothing('pic1');
 
     // addFavorite(['c1', 'c2', 'c3']);
     // addFavorite(['a1', 'a2', 'a3']);
