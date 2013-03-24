@@ -19,6 +19,15 @@ var addFavorite = function(clothes) {
 };
 
 //
+// This function will check if a favourite outfit alreaady exists.
+//
+// @param clothes - an array of clothes filenames.
+// @return boolean - TRUE if it exists, otherwise FALSE.
+var favExists = function(clothes) {
+    
+};
+
+//
 // This function removes the specified favourite outfit using
 // the provided ID value.
 //
