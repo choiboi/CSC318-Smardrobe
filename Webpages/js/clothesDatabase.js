@@ -37,7 +37,6 @@ var deleteClothing = function(nameID) {
 	db.deleteClothing(nameID);
 };
 
-
 $(document).ready(function() {
  	var db = new Database();
  	db.openDB();

@@ -139,20 +139,29 @@ var deleteTag = function(tag) {
 // @param clothesFilename - Either an array of clothes filenames or single 
 //                          filename string.
 //
-var addNewClothes = function(clothesFilename) {
+var addNewClothes = function(clothingBlob) {
     var clothesLocal = jQuery.parseJSON(localStorage[storageKeys.clothes]);
 
-    // If clothesFilename is a string.
-    if (typeof clothesFilename === "string") {
-        if (typeof clothesLocal[clothesFilename] === "undefined") {
-            clothesLocal[clothesFilename] = new Array();
+    // If clothBlob is a string.
+    if (typeof clothingBlob === "string") {
+        var id = storageKeys.makeId();
+        // Make sure it doesn't use the same existing IDs.
+        while (typeof clothesLocal[ID] !== "undefined") {
+            id = storageKeys.makeId();
         }
-    // If clothesFilename is a list of clothes filenames.
-    } else if (clothesFilename instanceof Array) {
-        for (var ind = 0; ind < clothesFilename.length; ind++) {
-            if (typeof clothesLocal[clothesFilename[ind]] === "undefined") {
-                clothesLocal[clothesFilename[ind]] = new Array();
+        clothesLocal[id] = new Array();
+        addNewClothing(id, clothingBlob);
+
+    // If clothBlob is a list of clothing blobs.
+    } else if (clothingBlob instanceof Array) {
+        for (var ind = 0; ind < clothingBlob.length; ind++) {
+            var id = storageKeys.makeId();
+            // Make sure it doesn't use the same existing IDs.
+            while (typeof clothesLocal[ID] !== "undefined") {
+                id = storageKeys.makeId();
             }
+            clothesLocal[id] = new Array();
+            addNewClothing(id, clothingBlob);
         }
     }
 
