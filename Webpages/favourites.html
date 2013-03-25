@@ -8,9 +8,40 @@
         <!-- jQuery Files -->
         <link rel="stylesheet" href="css-framework/jquery.mobile.structure-1.3.0.min.css"/>
         <link rel="stylesheet" href="css-framework/jquery.mobile.theme-1.3.0.min.css"/> 
+
+        <link rel="stylesheet" type="text/css" href="css/favourites.css">
+
+
+        <link href="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.css" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="css/photoswipe.css">
+
+        <!-- PhotoSwipe -->
+        <script type="text/javascript" src="js-framework/klass.min.js"></script>
+        <script type="text/javascript" src="js-framework/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="js-framework/jquery.mobile-1.3.0.min.js"></script>
+        <script type="text/javascript" src="js-framework/code.photoswipe-3.0.5.min.js"></script>
+        
+
+        <script type="text/javascript">
+            //jQuery version
+            $(document).ready(function(){
+
+            var myPhotoSwipe = $("#gallery a").photoSwipe({ enableMouseWheel: false , enableKeyboard: false });
+
+            });
+                    
+        </script>
+
+        <style>
+            .thumb {
+                width: 150px;
+                height: 150px;
+            }
+        </style>
     </head>
 
     <body class="ui-mobile-viewport">
+        
         <!-- Main Page -->
         <div data-role="page" id="smardrobe" data-position="fixed">
 
@@ -32,30 +63,33 @@
 
             <div data-role="content">
 
-                <ul id="Gallery">
-                    <li><a href="images/full/01.jpg"><img src="images/thumb/01.jpg" alt="Image 01" /></a></li>
-                    <li><a href="images/full/02.jpg"><img src="images/thumb/02.jpg" alt="Image 02" /></a></li>
-                    <li><a href="images/full/03.jpg"><img src="images/thumb/03.jpg" alt="Image 03" /></a></li>
-                    <li><a href="images/full/04.jpg"><img src="images/thumb/04.jpg" alt="Image 04" /></a></li>
-                    <li><a href="images/full/05.jpg"><img src="images/thumb/05.jpg" alt="Image 05" /></a></li>
-                    <li><a href="images/full/06.jpg"><img src="images/thumb/06.jpg" alt="Image 06" /></a></li>
-                </ul>
+                <!--<ul id="gallery">
+                    <li><a href="img/Coat.png"><img class="thumb" src="img/Coat.png" alt="Image 01" /></a></li>
+                    <li><a href="img/Pants.png"><img class="thumb" src="img/Pants.png" alt="Image 02" /></a></li>
+                    <li><a href="img/Shirt.png"><img class="thumb" src="img/Shirt.png" alt="Image 03" /></a></li>
+                    <li><a href="img/Shirt2.png"><img class="thumb" src="img/Shirt2.png" alt="Image 04" /></a></li>
+                    <li><a href="img/Shirt3.png"><img class="thumb" src="img/Shirt3.png" alt="Image 05" /></a></li>
+                </ul>-->
+                <div id="gallery">
+                    <a href="img/Coat.png" rel="external"><img class="thumb" alt="Image 001" src="img/Coat.png"></a>
+                    <a href="img/Pants.png" rel="external"><img class="thumb" alt="Image 002" src="img/Pants.png"></a>
+                    <a href="img/Shirt.png" rel="external"><img class="thumb" alt="Image 003" src="img/Shirt.png"></a>
+                    <a href="img/Shirt2.png" rel="external"><img class="thumb" alt="Image 003" src="img/Shirt2.png"></a>
+                    <a href="img/Shirt3.png" rel="external"><img class="thumb" alt="Image 003" src="img/Shirt3.png"></a>
+                </div>
             </div>
 
             <div data-role="footer" data-position="fixed" data-tap-toggle="false">
                 <a id="genOutfit" href="#" data-role="button" data-transition="none">Delete</a>
             </div>
         </div>
+
         <!-- Cordova Files -->
         <script type="text/javascript" src="js-framework/cordova-2.5.0.js"></script>
 
         <!-- jQuery Files -->
-        <script type="text/javascript" src="js-framework/jquery-1.9.1.min.js"></script>
-        <script type="text/javascript" src="js-framework/jquery.mobile-1.3.0.min.js"></script>
-
-        <!-- PhotoSwipe -->
-        <script type="text/javascript" src="js-framework/klass.min.js"></script>
-        <script type="text/javascript" src="js-framework/code.photoswipe-3.0.5.min.js"></script>\
+        <!--<script type="text/javascript" src="js-framework/jquery-1.9.1.min.js"></script>-->
+        <!--<script type="text/javascript" src="js-framework/jquery.mobile-1.3.0.min.js"></script>-->
 
         <!-- Others -->
         <script type="text/javascript" src="js/storeInformation.js"></script>
