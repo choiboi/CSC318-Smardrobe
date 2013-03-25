@@ -43,3 +43,9 @@ root {
 	width: 22%;
 	margin-left: 3%;
 }
+
+.image
+{
+    width: 50px;
+    height: 50px;
+}
