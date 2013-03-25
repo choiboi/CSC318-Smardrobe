@@ -253,10 +253,15 @@ var removeAssociation = function(tag, clothing) {
 // clothing.
 //
 // @param clothingFilename - filename of the clothing.
-// @return an array of tags.
+// @return an array of tags, otherwise null.
 //
 var retrieveTagsByClothing = function(clothingFilename) {
     var clothesLocal = jQuery.parseJSON(localStorage[storageKeys.clothes]);
+
+    if (typeof clothesLocal[clothingFilename] === "undefined") {
+        return null;
+    }
+
     return clothesLocal[clothingFilename];
 };
 
@@ -265,10 +270,15 @@ var retrieveTagsByClothing = function(clothingFilename) {
 // specified tag.
 //
 // @param tag - tag in string.
-// @return an array of clothes filenames.
+// @return an array of clothes filenames, otherwise null.
 //
 var retrieveClothingByTag = function(tag) {
     var tagsLocal = jQuery.parseJSON(localStorage[storageKeys.tags]);
+
+    if (typeof tagsLocal[tag] === "undefined") {
+        return null;
+    }
+
     return tagsLocal[tag];
 };
 
