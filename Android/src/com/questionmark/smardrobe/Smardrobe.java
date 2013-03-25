@@ -28,7 +28,9 @@ public class Smardrobe extends DroidGap
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        super.loadUrl(Config.getStartUrl());
+        //super.loadUrl(Config.getStartUrl());
+        super.setIntegerProperty("splashscreen", R.drawable.splash);
+        super.loadUrl(Config.getStartUrl(), 2000);
     }
 }
 
