@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Smardrobe</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=no"/>
+
+        <!-- jQuery Files -->
+        <link rel="stylesheet" href="css-framework/jquery.mobile.structure-1.3.0.min.css"/>
+        <link rel="stylesheet" href="css-framework/jquery.mobile.theme-1.3.0.min.css"/> 
+        
+        <!-- Others -->
+        <link rel="stylesheet" href="css/smardrobe.css"/>
+
+    </head>
+
+    <body class="ui-mobile-viewport">
+        <!-- Main Page -->
+        <div data-role="page" id="smardrobe" data-position="fixed">
+
+            <div data-role="header">
+                <h1>Favourites</h1>
+                <!-- Menu Button -->
+                <a data-role="button" href="#popupMenu" data-rel="popup" class="ui-btn-right">Menu</a>
+
+                <!-- Popup Menu -->
+                <div data-role="popup" id="popupMenu" data-theme="a">
+                    <ul data-role="listview" data-inset="true" style="min-width:210px;" data-theme="c">
+                        <li data-role="divider" data-theme="a">Menu</li>
+                        <li><a href="" data-transition="none">Add New Clothes</a></li>
+                        <li><a href="" data-transition="none">View Favourites</a></li>
+                        <li><a href="wardrobe.html" data-transition="none">View Wardrobe</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div data-role="content">
+
+                <ul id="Gallery">
+                    <li><a href="images/full/01.jpg"><img src="images/thumb/01.jpg" alt="Image 01" /></a></li>
+                    <li><a href="images/full/02.jpg"><img src="images/thumb/02.jpg" alt="Image 02" /></a></li>
+                    <li><a href="images/full/03.jpg"><img src="images/thumb/03.jpg" alt="Image 03" /></a></li>
+                    <li><a href="images/full/04.jpg"><img src="images/thumb/04.jpg" alt="Image 04" /></a></li>
+                    <li><a href="images/full/05.jpg"><img src="images/thumb/05.jpg" alt="Image 05" /></a></li>
+                    <li><a href="images/full/06.jpg"><img src="images/thumb/06.jpg" alt="Image 06" /></a></li>
+                </ul>
+        
+                <!-- Displays Weather Icon, Current City, and Current Temperature -->
+                <div id="divMain">
+                    <div id="divIcon"><img id="weatherIcon" /></div>
+                    <div id="divLocation"><p id="currLocation"></p></div>
+                    <div id="divTemp"><p id="weatherTemp"></p></div>
+                </div>
+                <!-- Displays other miscellaneous weather information. -->
+                <div id="weatherInfo" >
+                    <p id="weatherInfoText"></p>
+                </div>
+            </div>
+
+            <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+                <a id="genOutfit" href="#" data-role="button" data-transition="none">Delete?</a>
+            </div>
+        </div>
+        <!-- Cordova Files -->
+        <script type="text/javascript" src="js-framework/cordova-2.5.0.js"></script>
+
+        <!-- jQuery Files -->
+        <script type="text/javascript" src="js-framework/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="js-framework/jquery.mobile-1.3.0.min.js"></script>
+
+        <!-- PhotoSwipe -->
+        <script type="text/javascript" src="js/klass.min.js"></script>
+        <script type="text/javascript" src="js/code.photoswipe-3.0.5.min.js"></script>\
+
+        <!-- Others -->
+        <script type="text/javascript" src="js/smardrobeWeather.js"></script>
+        <script type="text/javascript" src="js/storeInformation.js"></script>
+        <script type="text/javascript" src="js/clothesDatabase.js"></script>
+    </body>
+</html>
