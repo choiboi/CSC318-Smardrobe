@@ -23,8 +23,43 @@ var addFavorite = function(clothes) {
 //
 // @param clothes - an array of clothes filenames.
 // @return boolean - TRUE if it exists, otherwise FALSE.
+//
 var favExists = function(clothes) {
-    
+    var favsLocal = jQuery.parseJSON(localStorage[storageKeys.favs]);
+
+    // Go through all the keys in favs JSON object.
+    for (var key in favsLocal) {
+        if (favsLocal.hasOwnProperty(key)) {
+            var clothesL = favsLocal[key];
+
+            // Go through the list of clothes.
+            for (var ind = 0; ind < clothesL.length; ind++) {
+                if (clothes.indexOf(clothesL[ind]) < 0) {
+                    return false;
+                }
+            }
+        }
+    }
+
+    return true;
+};
+
+//
+// This functions return the list of clothes for the specified
+// favourite.
+//
+// @param fav - name of favourite.
+// @return an array of clothes for the favourite fav, otherwise null
+//         if no such favourite exists.
+//
+var getFavouriteOutfit = function(fav) {
+    var favsLocal = jQuery.parseJSON(localStorage[storageKeys.favs]);
+
+    if (typeof favsLocal[fav] !== "undefined") {
+        return favsLocal[fav];
+    }
+
+    return null;
 };
 
 //
