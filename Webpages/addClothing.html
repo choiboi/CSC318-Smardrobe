@@ -12,8 +12,6 @@
         
         <!-- Others -->
         <link rel="stylesheet" href="css/addClothing.css"/>
-
-
     </head>
 
     <body>
@@ -40,15 +38,29 @@
             </div>
         </div>
 
-        <!-- Preview of Image -->
-        <!--<div data-role="page" id="preview" data-position="fixed">
+        <!-- Preview Page for Cropped Clothing -->
+        <div data-role="page" id="preview" data-position="fixed">
+            <div data-role="header" class="ui-corner-top">
+                    <h1>Clothing Preview</h1>
+            </div>
+            <div data-role="content" class="ui-corner-bottom ui-content">
+                <div class="center"><img id="clothingImg" src="img/clothes/Shirt.png"/></div>
+            </div>
 
-        </div>-->
+            <div data-role="footer" data-position="fixed" data-tap-toggle="false" class="center">
+                <a href="#camera" class="butSizeHalf" data-role="button" data-transition="none" 
+                    data-theme="c" data-icon="edit" data-iconpos="left">Take Again</a>
+                <a href="#properties" class="butSizeHalf" data-role="button" data-transition="none" 
+                    data-theme="b" data-icon="arrow-r" data-iconpos="right">Next</a>
+            </div>
+        </div>
 
         <!-- Selecting Properties -->
-        <!--<div data-role="page" id="properties" data-position="fixed">
-
-        </div>-->
+        <div data-role="page" id="properties" data-position="fixed">
+            <div data-role="header" class="ui-corner-top">
+                <h1>Select Properties</h1>
+            </div>
+        </div>
 
         <!-- Cordova Files -->
         <script type="text/javascript" src="js-framework/cordova-2.5.0.js"></script>

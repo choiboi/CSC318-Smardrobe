@@ -24,6 +24,16 @@ var dialogOK = function() {
 	cameraApp.run();
 };
 
+var resizeImg = function() {
+	var headerH = $.mobile.activePage.children('[data-role="header"]'),
+		footerH = $.mobile.activePage.children('[data-role="footer"]'),
+		contentH = $.mobile.activePage.children('[data-role="content"]'),
+		windowH = $(this).height(),
+		windowW = $(this).width();
+
+	alert(headerH + ", " + footerH + ", " + contentH + ", " + windowH + ", " + windowW);
+};
+
 document.addEventListener("deviceready", initialize, false);
 var cameraApp;
 
@@ -50,17 +60,22 @@ cameraApp.prototype={
         },function(){
             that._onFail.apply(that,arguments);
         },{
-            quality: 50,
-            destinationType: that._destinationType.DATA_URL
+            quality: 80,
+            destinationType: that._destinationType.DATA_URL,
+            targetWidth: 400,
+            targetHeight: 640,
+            encodingType: Camera.EncodingType.PNG,
+            correctOrientation: true
         });
     },
     
     _onPhotoDataSuccess: function(imageData) {
-        var smallImage = document.getElementById('smallImage');
-        smallImage.style.display = 'block';
+    	window.location = "addClothing.html#preview";
+        // var imgPreview = document.getElementById('clothingImg');
+        // imgPreview.style.display = 'block';
     
         // Show the captured photo.
-        smallImage.src = "data:image/jpeg;base64," + imageData;
+        // imgPreview.src = "data:image/png;base64," + imageData;
     },
 
     _onFail: function(message) {
