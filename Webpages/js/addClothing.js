@@ -1,15 +1,12 @@
 var initialize = function() {
 	//startCameraInfo();
-	$('#info').popup('open');
 
-	// if (typeof localStorage.info === "undefined") {
-	// 	localStorage.info = false;
-	// 	$('#info').popup('open');
-	// 	$('#popupBut').click();
-	// } else if (localStorage.info === "false") {
-	// 	$('#info').popup('open');
-	// 	$('#popupBut').click();
-	// }
+	if (typeof localStorage.info === "undefined") {
+		localStorage.info = false;
+		$('#info').popup('open');
+	} else if (localStorage.info === "false") {
+		$('#info').popup('open');
+	}
 }
 
 // var startCameraInfo = function() {

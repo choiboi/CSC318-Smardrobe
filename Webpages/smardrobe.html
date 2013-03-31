@@ -12,8 +12,8 @@
         <!-- Others -->
         <link rel="stylesheet" href="css/smardrobe.css"/>
         <script type="text/javascript" >
-            var changePage = function() {
-                window.location = "addClothing.html";
+            var changePage = function(link) {
+                window.location = link;
             };
         </script>
     </head>
@@ -31,9 +31,9 @@
                 <div data-role="popup" id="popupMenu" data-theme="a">
                     <ul data-role="listview" data-inset="true" style="min-width:210px;" data-theme="c">
                         <li data-role="divider" data-theme="a">Menu</li>
-                        <li><a href="" onclick="changePage();" data-transition="none">Add New Clothes</a></li>
-                        <li><a href="favourites.html" data-transition="none">View Favourites</a></li>
-                        <li><a href="wardrobe.html" data-transition="none">View Wardrobe</a></li>
+                        <li><a href="" onclick="changePage('addClothing.html');" data-transition="none">Add New Clothes</a></li>
+                        <li><a href="" onclick="changePage('favourites.html');" data-transition="none">View Favourites</a></li>
+                        <li><a href="" onclick="changePage('wardrobe.html');" data-transition="none">View Wardrobe</a></li>
                     </ul>
                 </div>
             </div>
