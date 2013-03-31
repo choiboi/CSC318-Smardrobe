@@ -45,7 +45,18 @@ $('#propConfirm').click(function() {
 });
 
 $('#propCancel').click(function() {
+	$('#cancelInfo').popup('open');
+});
+
+$('#cancelYES').click(function() {
+	$('#cancelInfo').popup({history : false});
+	$('#cancelInfo').popup('close');
 	window.location = "smardrobe.html";
+});
+
+$('#cancelNO').click(function() {
+	$('#cancelInfo').popup({history : false});
+	$('#cancelInfo').popup('close');
 });
 
 var resizeImg = function() {
