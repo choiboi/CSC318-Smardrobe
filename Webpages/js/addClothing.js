@@ -37,11 +37,15 @@ $('#propConfirm').click(function() {
 		s1 = s1.concat(new Array('formal'));
 	}
 
-	var wearType = $('input[name="radio-choice"]:checked').val();
+	if (s1.length === 0) {
+		$('#notEnoughInfo').popup('open');
+	} else {
+		var wearType = $('input[name="radio-choice"]:checked').val();
 
-	//TODOs: Store These property values.
+		//TODOs: Store These property values.
 
-	window.location = "smardrobe.html";
+		window.location = "smardrobe.html";
+	}
 });
 
 $('#propCancel').click(function() {
@@ -57,6 +61,11 @@ $('#cancelYES').click(function() {
 $('#cancelNO').click(function() {
 	$('#cancelInfo').popup({history : false});
 	$('#cancelInfo').popup('close');
+});
+
+$('#notEnoughOK').click(function() {
+	$('#notEnoughInfo').popup({history : false});
+	$('#notEnoughInfo').popup('close');
 });
 
 var resizeImg = function() {
