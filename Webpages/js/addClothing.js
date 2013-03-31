@@ -1,3 +1,6 @@
+//
+// This function is invoked once it enters add clothing page.
+//
 var initialize = function() {
 	cameraApp = new cameraApp();
 
@@ -11,6 +14,9 @@ var initialize = function() {
 	}
 };
 
+//
+// Closes the popup with information on taking pictures.
+//
 var dialogOK = function() {
 	var t = $('#checkbox-1a').is(':checked');
 	if (t === true) {
@@ -24,10 +30,18 @@ var dialogOK = function() {
 	cameraApp.run();
 };
 
+//
+// When retake button is pressed, startup camera again.
+//
 $('#retakeBut').click(function() {
 	cameraApp.run();
 });
 
+//
+// Once confirm button is pressed, get the user's selections
+// and store info. If the user has not selected anything, then
+// open a popup alerting the user.
+//
 $('#propConfirm').click(function() {
 	s1 = new Array();
 	if ($('#checkbox-1b').is(':checked') === true) {
@@ -48,26 +62,41 @@ $('#propConfirm').click(function() {
 	}
 });
 
+//
+// Close button for properties page.
+//
 $('#propCancel').click(function() {
 	$('#cancelInfo').popup('open');
 });
 
+//
+// Close cancel confirmation popup and return back to main screen.
+//
 $('#cancelYES').click(function() {
 	$('#cancelInfo').popup({history : false});
 	$('#cancelInfo').popup('close');
 	window.location = "smardrobe.html";
 });
 
+//
+// Close cancel confirmation popup. 
+//
 $('#cancelNO').click(function() {
 	$('#cancelInfo').popup({history : false});
 	$('#cancelInfo').popup('close');
 });
 
+//
+// Close the missing information popup.
+//
 $('#notEnoughOK').click(function() {
 	$('#notEnoughInfo').popup({history : false});
 	$('#notEnoughInfo').popup('close');
 });
 
+//
+// Resize image to fit on the preview screen.
+//
 var resizeImg = function() {
 	var headerH = $.mobile.activePage.children('[data-role="header"]'),
 		footerH = $.mobile.activePage.children('[data-role="footer"]'),
@@ -81,8 +110,11 @@ var resizeImg = function() {
 document.addEventListener("deviceready", initialize, false);
 var cameraApp;
 
-function cameraApp(){}
 
+//
+// Class for initiating the camera.
+//
+function cameraApp(){}
 cameraApp.prototype={
     _pictureSource: null,
     

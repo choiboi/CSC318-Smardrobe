@@ -305,35 +305,6 @@ $(document).ready(function() {
     if (typeof localStorage[storageKeys.favs] === "undefined") {
         localStorage[storageKeys.favs] = JSON.stringify({});
     }
-
-    // addNewTag('tag');
-    // addNewTag('tag2');
-    // addNewTag(['ui', 'op']);
-    // addNewTag(new Array('hj', 'kl'));
-
-    // addNewClothes('pic1');
-    // addNewClothes('pic2');
-    // addNewClothes(['pic3', 'pic4']);
-    // addNewClothes(new Array('pic5', 'pic6'));
-
-    // associateTagClothes('tag', 'pic1');
-    // associateTagClothes('ui', 'pic2');
-    // associateTagClothes('randomTag', 'pic6');
-    // associateTagClothes('hj', 'randomPic');
-    // associateTagClothes('ui', 'pic3');
-
-    // alert(retrieveTagsByClothing('pic2'));
-    // alert(retrieveClothingByTag('ui'));
-
-    // removeAssociation('ui', 'pic1');
-    // removeAssociation('ui', 'pic2');
-    // removeAssociation('hj', 'randomPic');
-
-    // deleteTag('ui');
-    // deleteClothing('pic1');
-
-    // addFavorite(['c1', 'c2', 'c3']);
-    // addFavorite(['a1', 'a2', 'a3']);
 });
 
 //
