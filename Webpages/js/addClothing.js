@@ -12,7 +12,7 @@ var initialize = function() {
 };
 
 var dialogOK = function() {
-	var t = $('#checkbox-1').is(':checked');
+	var t = $('#checkbox-1a').is(':checked');
 	if (t === true) {
 		localStorage.info = "true";
 	}
@@ -23,6 +23,30 @@ var dialogOK = function() {
 	// Start Camera after dialog has been closed.
 	cameraApp.run();
 };
+
+$('#retakeBut').click(function() {
+	cameraApp.run();
+});
+
+$('#propConfirm').click(function() {
+	s1 = new Array();
+	if ($('#checkbox-1b').is(':checked') === true) {
+		s1 = s1.concat(new Array('casual'));
+	}
+	if ($('#checkbox-2b').is(':checked') === true) {
+		s1 = s1.concat(new Array('formal'));
+	}
+
+	var wearType = $('input[name="radio-choice"]:checked').val();
+
+	//TODOs: Store These property values.
+
+	window.location = "smardrobe.html";
+});
+
+$('#propCancel').click(function() {
+	window.location = "smardrobe.html";
+});
 
 var resizeImg = function() {
 	var headerH = $.mobile.activePage.children('[data-role="header"]'),
