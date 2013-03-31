@@ -16,9 +16,6 @@
     <body>
         <!-- Camera Application -->
         <div data-role="page" id="camera" data-position="fixed">
-            <!-- Dummy button not displayed on page. -->
-            <!--<a href="#info" id="popupBut" data-role="button" data-rel="popup" data-position-to="window"></a>-->
-
             <div data-role="popup" id="info" class="ui-corner-all">
                 <div data-role="header" class="ui-corner-top">
                     <h1>Information</h1>
@@ -29,7 +26,13 @@
                         coloured background. Background colour should be different
                         from the colour of the clothing.
                     </p>
-                    <a href="" data-role="button" data-dismissible="false">OK</a>
+                    <div data-role="fieldcontain">
+                        <fieldset data-role="controlgroup">
+                            <input type="checkbox" name="checkbox-1" id="checkbox-1" class="custom" />
+                            <label for="checkbox-1">Prevent message from appearing again.</label>
+                        </fieldset>
+                    </div>
+                    <a href="" onclick="dialogOK()" data-role="button" data-dismissible="false">OK</a>
                 </div>
             </div>
         </div>
