@@ -1,16 +1,13 @@
-//$(document).ready(initialize);
-document.addEventListener("deviceready", initialize, false);
-
 var initialize = function() {
-	//startCameraInfo();
 	cameraApp = new cameraApp();
-    cameraApp.run();
 
 	if (typeof localStorage.info === "undefined") {
 		localStorage.info = "false";
 		$('#info').popup('open');
 	} else if (localStorage.info === "false") {
 		$('#info').popup('open');
+	} else {
+    	cameraApp.run();
 	}
 };
 
@@ -22,7 +19,13 @@ var dialogOK = function() {
 
 	$('#info').popup({history : false});
 	$('#info').popup('close');
+
+	// Start Camera after dialog has been closed.
+	cameraApp.run();
 };
+
+document.addEventListener("deviceready", initialize, false);
+var cameraApp;
 
 function cameraApp(){}
 
