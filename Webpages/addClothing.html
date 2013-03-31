@@ -60,6 +60,41 @@
             <div data-role="header" class="ui-corner-top">
                 <h1>Select Properties</h1>
             </div>
+
+            <div data-role="content" class="ui-corner-bottom ui-content">
+                <h3>Section 1<br><span class="propHeaderSpan">(Select at least one.)</span></h3>
+                <div data-role="fieldcontain">
+                    <fieldset data-role="controlgroup">
+                        <input type="checkbox" name="checkbox-1a" id="checkbox-1a" class="custom"/>
+                        <label for="checkbox-1a">Casual</label>
+                        <input type="checkbox" name="checkbox-2a" id="checkbox-2a" class="custom"/>
+                        <label for="checkbox-2a">Formal</label>
+                    </fieldset>
+                </div>
+
+                <h3>Section 2<br><span class="propHeaderSpan">(Select the one that best describes this clothing.)</span></h3>
+                <div data-role="fieldcontain">
+                    <fieldset data-role="controlgroup">
+                        <input type="radio" name="radio-choice" id="radio-choice-1" value="top"/>
+                        <label for="radio-choice-1">Top</label>
+                        <input type="radio" name="radio-choice" id="radio-choice-2" value="pants"/>
+                        <label for="radio-choice-2">Pants</label>
+                        <input type="radio" name="radio-choice" id="radio-choice-3" value="dress"/>
+                        <label for="radio-choice-3">Dress</label>
+                        <input type="radio" name="radio-choice" id="radio-choice-4" value="outwear"/>
+                        <label for="radio-choice-4">Outerwear</label>
+                        <input type="radio" name="radio-choice" id="radio-choice-5" value="other"/>
+                        <label for="radio-choice-5">Other</label>                    
+                    </fieldset>
+                </div>
+            </div>
+
+            <div data-role="footer" data-position="fixed" data-tap-toggle="false" class="center">
+                <a href="" class="butSizeHalf" data-role="button" data-transition="none"
+                    data-theme="b" data-icon="check" data-iconpos="left">Confirm</a>
+                <a href="" class="butSizeHalf" data-role="button" data-transition="none"
+                    data-icon="delete" data-iconpos="right">Cancel</a>
+            </div>
         </div>
 
         <!-- Cordova Files -->

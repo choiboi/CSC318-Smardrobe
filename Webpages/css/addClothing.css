@@ -11,3 +11,8 @@
 .butSizeHalf {
 	width: 48%;
 }
+
+.propHeaderSpan {
+	font-size: 75%;
+	color: gray;
+}
