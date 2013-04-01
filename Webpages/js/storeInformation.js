@@ -295,7 +295,12 @@ var retrieveClothingByTag = function(tag) {
 
 $(document).ready(function() {
     storageKeys = new StorageKeys();
-    localStorage.clear();
+    //localStorage.clear();
+
+    var isEmpty = false;
+    if (localStorage.length === 0) {
+        isEmpty = true;
+    }
 
     //Initiate storage on first app start.
     if (typeof localStorage[storageKeys.tags] === "undefined") {
@@ -307,8 +312,9 @@ $(document).ready(function() {
     if (typeof localStorage[storageKeys.favs] === "undefined") {
         localStorage[storageKeys.favs] = JSON.stringify({});
     }
-
-    app.initialize();
+    if (isEmpty) {
+        app.initialize();
+    }
 });
 
 //
