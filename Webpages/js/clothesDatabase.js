@@ -79,7 +79,7 @@ function Database() {
 
 	this.getClothing = function(ID, cb) {
 		var query = "SELECT * FROM " + dbName + " WHERE id='" + ID + "'";
-		alert(ID);
+
 		db.transaction(function(tx) {
 			tx.executeSql(query, [], 
 				function(tx, result){
