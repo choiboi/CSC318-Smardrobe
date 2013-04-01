@@ -1,8 +1,9 @@
 var pageNumber = 0;
+var maxPages = 0;
 var filterOptions = [];
 var selectedImage;
 var images = [];
-var displayLimit = 15;
+var displayLimit = 12;
 var x_start;
 
 
@@ -22,6 +23,20 @@ function touchEnd(e) {
         loadPreviousPage();
     } else if (x_start - touch.pageX < -50) {
         loadNextPage();
+    }
+}
+
+function loadPreviousPage() {
+    if (pageNumber > 0) {
+        pageNumber -= 1;
+        $.mobile.changePage($("#" + pageNumber), { transition: "slide", revserse: true});
+    }
+}
+
+function loadNextPage() {
+    if (pageNumber < maxPages) {
+        pageNumber += 1;
+        $.mobile.changePage($("#" + pageNumber), { transition: "slide", revserse: false});
     }
 }
 
@@ -64,6 +79,7 @@ function initializer(filterOps, image, disLimit) {
         counter += 1;
     }
 
+    maxPages = counter;
     $(".header").append('<a href="smardrobe.html" data-role="button" id="backButton">Back</a>');
     $(".header").append('<h4>Wardrobe</h4>');
     $(".header").append('<a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true">Filter</a>');
