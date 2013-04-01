@@ -13,13 +13,20 @@ function detectEdges(image) {
     
     canvas.width = imgWidth;
     canvas.height = imgHeight;
-    var img = new Image;
-    img.onload = function(){
-        canvasContext.drawImage(img,0,0); // Or at whatever offset you like
-    };
-    img.src = "img/clothes/example.jpg";
+    //var img = new Image();
+    //img.src = "img/clothes/Coat.png";
+    //canvas.width = img.width;
+    //canvas.height = img.height;
     
-    //canvasContext.drawImage(image,0,0);
+    //img.onload = function(){
+         // Or at whatever offset you like
+    //     canvasContext.drawImage(img,0,0);
+    //};
+    
+    //canvasContext.putImageData(imageData, 0, 0, 0, 0, imageData.width, imageData.height);
+    
+    image.parentNode.appendChild(canvas); 
+    canvasContext.drawImage(image,0,0);
     
     var imageData = canvasContext.getImageData(0,0, imgWidth, imgHeight);
     
@@ -30,7 +37,9 @@ function detectEdges(image) {
             var index = (i*4) * imageData.width + (j*4);
 
             var dvalues = derivativeCalculator(imageData, index);
-            alert(dvalues);
+            if (imageData.data[index] == 255) {
+                imageData.data[index] -= 1;
+            }
             gradientList[i][j] = dvalues;
         }
     }
@@ -39,7 +48,6 @@ function detectEdges(image) {
     i = Math.ceil(imageData.height / 2);
     //alert(i);
     for (j = 1; j < imageData.width - 1; j++) {
-        alert(gradientList[i][j][0]);
         if (max[0] < gradientList[i][j][0] * Math.abs(i - j / 2) / i) {
             
             max[0] = gradientList[i][j][0] * Math.abs(i - j / 2) / i;
@@ -51,21 +59,26 @@ function detectEdges(image) {
     j = max[1];
     var old_tuple = [0, 0];
     var tuple= [0, 0];
-    
     //i is height, j is width
     index = i * imageData.width + (j*4);
     while (imageData.data[index] < 255) {
         
         imageData.data[index] = 255;
+        imageData.data[index + 1] = 0;
+        imageData.data[index + 2] = 0;
+        //canvasContext.putImageData(imageData, 0, 0, 0, 0, imageData.width, imageData.height);
         old_tuple = tuple;
         tuple = findWeightedMax(gradientList, i, j, old_tuple);
-        
+        gradientList[i][j];
         j = j + tuple[0];
         i = i + tuple[1];
         index = i * imageData.width + (j*4);
+        imageData.data[index];
+        imageData.data[index];
     }
     
-    canvasContext.putImageData(imageData, 0, 0, 0, 0, imageData.width, imageData.height);
+    canvasContext.clearRect(0, 0, canvas.width, canvas.height)
+    canvasContext.putImageData(imageData, 0, 0);
     image.parentNode.appendChild(canvas);
 }
 
@@ -73,17 +86,23 @@ function findWeightedMax(gradientList, i, j, old_tuple) {
     var surroundList = [[1,0], [1,-1], [0,-1], [-1,-1], [-1,0], [-1,1], [0,1], [1,1]];
     var max = 0;
     var ind = 0;
+    var new_i, new_j;
     old_tuple[0] = old_tuple[0] * -1;
     old_tuple[1] = old_tuple[1] * -1;
-    alert(i);
-    alert(j);
     for (var index = 0; index < surroundList.length; index++) {
-        var comparedVal = gradientList[i][j][0];
-        if (gradientList[i][j][2] == surroundList[index]) {
-            comparedVal = comparedVal * 1.2;
+        new_i = i + surroundList[index][1];
+        new_j = j + surroundList[index][0];
+        var comparedVal = gradientList[new_i][new_j][0];
+        
+        if (gradientList[i][j][2][0] == surroundList[index][0] && gradientList[i][j][2][1] == surroundList[index][1]) {
+            comparedVal = comparedVal * 2;
         }
-        if (old_tuple == surroundList[index]) {
+        if (gradientList[i + old_tuple[1]][j + old_tuple[0]][2][0] == surroundList[index][0] && gradientList[i + old_tuple[1]][j + old_tuple[0]][2][1] ==  surroundList[index][1]) {
+            comparedVal = comparedVal * 2;
+        }
+        if (old_tuple[0] == surroundList[index][0] && old_tuple[1] == surroundList[index][1]) {
             comparedVal = comparedVal * 0;
+            
         }
         if (max < comparedVal) {
             max = comparedVal;
@@ -102,52 +121,55 @@ function derivativeCalculator(imageData, index) {
     var sobel_y = [[-1,-2,-1],
                     [0,0,0],
                     [1,2,1]];
+                
     var width = imageData.width;
     
     var pixel_x = sobelOperator(sobel_x, imageData, index);
-    alert(pixel_x);
     var pixel_y = sobelOperator(sobel_y, imageData, index);
     var alpha = imageData.data[index + 4];
-    var intensity = Math.sqrt(pixel_x * pixel_y);
+    var intensity = Math.sqrt(pixel_x * pixel_x + pixel_y * pixel_y);
+
     var angle = Math.atan2(pixel_y, pixel_x);
     
     if (angle < 0) {
-        angle = Math.PI + Math.abs(angle);
+        angle = 2 * Math.PI + angle;
+        
     }
     
-    alert(angle);
-    var increment = (angle / (Math.PI / 8));
-    alert(increment);
+    var normal_angle = (angle + Math.PI / 2) % (Math.PI * 2);
+    
+    var increment = (normal_angle / (Math.PI / 8));
+    
     var coordAngle = [];
     
-    if (increment < 1 || increment >= 15) {
+    if (increment < 1 && increment >= 15) {
         coordAngle = [1,0];
     }
-    if (increment < 3 || increment >= 1) {
+    if (increment < 3 && increment >= 1) {
         coordAngle = [1,-1];
     }
-    if (increment < 5 || increment >= 3) {
+    if (increment < 5 && increment >= 3) {
         coordAngle = [0,-1];
     }
-    if (increment < 7 || increment >= 5) {
+    if (increment < 7 && increment >= 5) {
         coordAngle = [-1,-1];
     }
-    if (increment < 9 || increment >= 7) {
+    if (increment < 9 && increment >= 7) {
         coordAngle = [-1,0];
     }
-    if (increment < 11 || increment >= 9) {
+    if (increment < 11 && increment >= 9) {
         coordAngle = [-1,1];
     }
-    if (increment < 13 || increment >= 11) {
+    if (increment < 13 && increment >= 11) {
         coordAngle = [0,1];
     }
-    if (increment < 15 || increment >= 13) {
+    if (increment < 15 && increment >= 13) {
         coordAngle = [1,1];
     }
     
     
     
-    return [intensity, alpha, coordAngle]; 
+    return [intensity, alpha, coordAngle, pixel_x, pixel_y]; 
 }
 
 function sobelOperator(sobel_x, imageData, index) {
@@ -170,10 +192,10 @@ function average(imageData, index) {
 }
 
 function twoDArray(width, height) {
-    var list = new Array(width);
+    var list = new Array(height);
     
     for (var i = 0; i < width; i++) {
-        list[i] = new Array(height);
+        list[i] = new Array(width);
     }
     
     return list;

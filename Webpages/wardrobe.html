@@ -14,71 +14,11 @@
         <script type="text/javascript" src="js-framework/cordova-2.5.0.js"></script>
         <script type="text/javascript" src="js/wardrobeLoader.js"></script>
         <script type="text/javascript" src="js/edgeDetector.js"></script>
+
     </head>
 
-    <body class="ui-mobile-viewport">
-        <div data-role="page" id="wardrobe" data-theme="a">
-            <div data-role="header" data-theme="a">
-
-                <a href="smardrobe.html" data-role="button" id="backButton">Back</a>
-
-                <h4>
-                    Wardrobe
-                </h4>
-
-
-                <a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true">Filter</a>
-
-                <div data-role="popup" id="popupMenu" data-theme="a">
-                    <ul data-role="listview" data-inset="true" style="min-width:210px;" data-theme="a">
-                        <li data-role="divider" data-theme="a">Filter</li>
-                        <li><a href="options.html">Options</a></li>
-                        <li><a href="methods.html">Methods</a></li>
-                        <li><a href="events.html">Events</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div data-role="content">	
-
-                <ul class="gallery">
-
-                    <li><a href="img/clothes/coat.png" rel="external"><img src="img/clothes/coat.png" alt="Image 01" class="image"/></a></li>
-                    <li><a href="img/clothes/pants.png" rel="external"><img src="img/clothes/pants.png" alt="Image 02" class="image"/></a></li>
-                    <li><a href="img/clothes/shirt.png" rel="external"><img src="img/clothes/shirt.png" alt="Image 03" class="image"/></a></li>
-
-                </ul>
-
-            </div>
-
-            <div id="footer" data-role="footer" data-position="fixed" data-theme="a">
-                <a href="#delete" data-role="button">Delete</a>
-            </div>
-
-
-        </div>
-
-        <div data-role="page" data-add-back-btn="true" id="Gallery1" class="gallery-page">
-
-            <div data-role="header">
-                <h1>First Gallery</h1>
-            </div>
-
-            <div data-role="content">	
-
-                <ul class="gallery">
-
-                    <li><a href="img/clothes/coat.png" rel="external"><img src="img/clothes/coat.png" alt="Image 01" class="image"/></a></li>
-                    <li><a href="img/clothes/pants.png" rel="external"><img src="img/clothes/pants.png" alt="Image 02" class="image"/></a></li>
-                    <li><a href="img/clothes/shirt.png" rel="external"><img src="img/clothes/shirt.png" alt="Image 03" class="image"/></a></li>
-
-                </ul>
-
-            </div>
-
-
-        </div>
-        
+    <body id="mainBody" class="ui-mobile-viewport">
+        <script>initializer(0, 0, 12)</script>
 
     </body>
 
