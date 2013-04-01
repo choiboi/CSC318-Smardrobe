@@ -51,6 +51,21 @@
 	clear: both;
 }
 
+#topImg {
+	max-width: 95%;
+	max-height: 28%;
+}
+
+#bottomImg {
+	max-width: 95%;
+	max-height: 28%;
+}
+
+#shoeImg {
+	max-width: 95%;
+	max-height: 10%;
+}
+
 .center {
 	margin: 0 auto;
 	text-align: center;
