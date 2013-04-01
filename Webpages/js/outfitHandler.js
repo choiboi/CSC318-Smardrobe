@@ -106,8 +106,12 @@ var swipedShoe = function(direction) {
 	});
 };
 
+$('#favButton').click(function() {
+	var favList = new Array(currTop, currBottom, currShoe);
+	addFavorite(favList);
+	$('#favButton').attr('data-theme', 'e');
+});
 
-// $(document).on('pageinit', '[data-role="page"]#smardrobe', function() {
 $(document).ready(function() {
 	// Swipe event listener for top wear.
 	$('#top').on('swipeleft', function() {
