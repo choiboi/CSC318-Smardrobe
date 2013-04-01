@@ -10,14 +10,14 @@ var x_start;
 var clothingNames = [];
 
 $(document).ready(function() {
-    document.getElementById('mainBody').on('swipeleft', function() {
+    $('#mainBody').on('swipeleft', function() {
         loadPreviousPage();
     });
-    document.getElementById('mainBody').on('swiperight', function() {
+    $('#mainBody').on('swiperight', function() {
         loadNextPage();
     });
     
-    
+    initializer(0, 3)
 });
 
 
@@ -103,8 +103,6 @@ var deleteFunction = function(event) {
                 });
             }
         }
-
-        
     } else {
         deleteClothing(clothingNames[selectedImage]);
         deleteClothingDB(clothingNames[selectedImage]);
@@ -139,9 +137,6 @@ var deleteFunction = function(event) {
             });
         }
     }
-    
-    multiSelect = false;
-    
 }
 
 //done
@@ -197,18 +192,23 @@ var multiSelectFunction = function(event) {
 function initializer(image, disLimit) {
     displayLimit = disLimit;
     selectedImage = image;
-    filterOptions = [];
-    filterOptions.push('shoe');
-
+    filterOptions = ["shoe"];
+    
     
     for (var i = 0; i < filterOptions.length; i++) {
+        
         clothingNames = clothingNames.concat(retrieveClothingByTag(filterOptions[i]));
     }
-
+    
+    alert(clothingNames);
+    
     for (i = 0; i < clothingNames.length; i++) {
-        getClothing(clothingNames[i]);
+        
+        getClothingDB(clothingNames[i], function(clothing) {
+            images.push(clothing);
+        });
     }
-
+    
     var counter = 0;
     var hasNext;
     
@@ -273,7 +273,7 @@ function imageListDisplay (counter) {
             var div = document.createElement("div");
             var image = document.createElement("img");
 
-            image.src = "data:image/png;base64," + images[i];
+            image.src = "" + images[i];
             //image.setAttribute('onclick', "zoomIn(" + i + ")");
             image.setAttribute('class', "image");
             image.setAttribute('id', "" + i);
