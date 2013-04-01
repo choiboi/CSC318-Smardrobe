@@ -50,18 +50,19 @@ function Database() {
 	var dbVersion = "1.0";
 	var dbDispName = "Smardrobe Clothes";
 	// Allocate 10MB for database.
-	var dbSize = 1024 * 1024 * 10;
+	var dbSize = 1024 * 1024 * 20;
 	var db;
 
 	this.openDB = function() {
 		db = window.openDatabase("Database", dbVersion, dbDispName, dbSize);
 		db.transaction(function(tx) {
+			tx.executeSql("DROP TABLE IF EXISTS " + this.dbName);
 			tx.executeSql("CREATE TABLE IF NOT EXISTS " + dbName + " (id unique, clothing, fileSize)");
 		});
 	};
 
 	this.deleteDB = function() {
-		db.transaction(function(tx) {
+		db.transaction(function(tx) {s
 			tx.executeSql("DROP TABLE IF EXISTS " + dbName);
 		}, errorCB);
 	}
@@ -78,6 +79,7 @@ function Database() {
 
 	this.getClothing = function(ID, cb) {
 		var query = "SELECT * FROM " + dbName + " WHERE id='" + ID + "'";
+		alert(ID);
 		db.transaction(function(tx) {
 			tx.executeSql(query, [], 
 				function(tx, result){

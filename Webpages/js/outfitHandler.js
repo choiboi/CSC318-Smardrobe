@@ -106,6 +106,7 @@ var swipedShoe = function(direction) {
 	});
 };
 
+
 // $(document).on('pageinit', '[data-role="page"]#smardrobe', function() {
 $(document).ready(function() {
 	// Swipe event listener for top wear.

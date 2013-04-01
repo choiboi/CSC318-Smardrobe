@@ -10,20 +10,67 @@ app = {
 		associateTagClothes('casual', id1);
 		associateTagClothes('formal', id1);
 
+		id1 = addNewClothes(ClothesData.coat2);
+		associateTagClothes('outerwear', id1);
+		associateTagClothes('white', id1);
+		associateTagClothes('casual', id1);
+
+		id1 = addNewClothes(ClothesData.coat3);
+		associateTagClothes('outerwear', id1);
+		associateTagClothes('brown', id1);
+		associateTagClothes('casual', id1);
+
+		id1 = addNewClothes(ClothesData.coat4);
+		associateTagClothes('outerwear', id1);
+		associateTagClothes('pink', id1);
+		associateTagClothes('casual', id1);
+
+		id1 = addNewClothes(ClothesData.coat5);
+		associateTagClothes('outerwear', id1);
+		associateTagClothes('red', id1);
+		associateTagClothes('casual', id1);
+
 		var id2 = addNewClothes(ClothesData.pant1);
 		associateTagClothes('black', id2);
 		associateTagClothes('pant', id2);
 		associateTagClothes('casual', id2);
 
-		var id3 = addNewClothes(ClothesData.shirt1);
-		associateTagClothes('black', id3);
+		id2 = addNewClothes(ClothesData.pant2);
+		associateTagClothes('tan', id2);
+		associateTagClothes('pant', id2);
+		associateTagClothes('casual', id2);
+
+		id2 = addNewClothes(ClothesData.pant3);
+		associateTagClothes('tan', id2);
+		associateTagClothes('pant', id2);
+		associateTagClothes('casual', id2);
+		associateTagClothes('formal', id2);
+
+		id2 = addNewClothes(ClothesData.pant4);
+		associateTagClothes('blue', id2);
+		associateTagClothes('pant', id2);
+		associateTagClothes('casual', id2);
+		associateTagClothes('formal', id2);
+
+		id2 = addNewClothes(ClothesData.pant5);
+		associateTagClothes('black', id2);
+		associateTagClothes('pant', id2);
+		associateTagClothes('casual', id2);
+
+		var id3 = addNewClothes(ClothesData.tshirt1);
+		associateTagClothes('blue', id3);
 		associateTagClothes('tshirt', id3);
 		associateTagClothes('casual', id3);
 
-		var id4 = addNewClothes(ClothesData.shirt2);
-		associateTagClothes('blue', id4);
-		associateTagClothes('tshirt', id4);
-		associateTagClothes('casual', id4);
+		id3 = addNewClothes(ClothesData.tshirt2);
+		associateTagClothes('white', id3);
+		associateTagClothes('tshirt', id3);
+		associateTagClothes('casual', id3);
+
+		id3 = addNewClothes(ClothesData.tshirt3);
+		associateTagClothes('black', id3);
+		associateTagClothes('tshirt', id3);
+		associateTagClothes('casual', id3);
 
 		var id5 = addNewClothes(ClothesData.shoe1);
 		associateTagClothes('casual', id5);
@@ -55,5 +102,35 @@ app = {
 		associateTagClothes('shoe', id10);
 		associateTagClothes('formal', id10);
 		associateTagClothes('heels', id10);
+
+		var id11 = addNewClothes(ClothesData.sweater1);
+		associateTagClothes('casual', id11);
+		associateTagClothes('outerwear', id11);
+		associateTagClothes('white', id11);
+
+		id11 = addNewClothes(ClothesData.sweater2);
+		associateTagClothes('casual', id11);
+		associateTagClothes('outerwear', id11);
+		associateTagClothes('grey', id11);
+
+		id11 = addNewClothes(ClothesData.sweater3);
+		associateTagClothes('casual', id11);
+		associateTagClothes('outerwear', id11);
+		associateTagClothes('black', id11);
+
+		id11 = addNewClothes(ClothesData.sweater4);
+		associateTagClothes('casual', id11);
+		associateTagClothes('outerwear', id11);
+		associateTagClothes('grey', id11);
+
+		id11 = addNewClothes(ClothesData.sweater5);
+		associateTagClothes('casual', id11);
+		associateTagClothes('outerwear', id11);
+		associateTagClothes('blue', id11);
+
+		id11 = addNewClothes(ClothesData.sweater6);
+		associateTagClothes('casual', id11);
+		associateTagClothes('outerwear', id11);
+		associateTagClothes('red', id11);
 	}
 };
