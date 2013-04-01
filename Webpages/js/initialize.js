@@ -1,25 +1,29 @@
 app = {
 	initialize: function() {
 		this.setupClothes();
-
 	},
 
 	setupClothes: function() {
 		var id1 = addNewClothes(ClothesData.coat1);
 		associateTagClothes('outerwear', id1);
 		associateTagClothes('black', id1);
+		associateTagClothes('casual', id1);
+		associateTagClothes('formal', id1);
 
 		var id2 = addNewClothes(ClothesData.pant1);
 		associateTagClothes('black', id2);
 		associateTagClothes('pant', id2);
+		associateTagClothes('casual', id2);
 
 		var id3 = addNewClothes(ClothesData.shirt1);
 		associateTagClothes('black', id3);
 		associateTagClothes('tshirt', id3);
+		associateTagClothes('casual', id3);
 
 		var id4 = addNewClothes(ClothesData.shirt2);
 		associateTagClothes('blue', id4);
 		associateTagClothes('tshirt', id4);
+		associateTagClothes('casual', id4);
 
 		var id5 = addNewClothes(ClothesData.shoe1);
 		associateTagClothes('casual', id5);

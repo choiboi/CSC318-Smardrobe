@@ -38,7 +38,6 @@ var deleteClothing = function(nameID) {
 };
 
 $(document).ready(function() {
-	alert('test');
  	db = new Database();
  	db.openDB();
 });

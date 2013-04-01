@@ -207,7 +207,6 @@ var deleteClothing = function(clothing) {
 var associateTagClothes = function(tag, clothing) {
     // To make sure they already exist in the database.
     addNewTag(tag);
-    addNewClothes(clothing);
 
     var tagsLocal = jQuery.parseJSON(localStorage[storageKeys.tags]);
     var clothesLocal = jQuery.parseJSON(localStorage[storageKeys.clothes]);
@@ -296,7 +295,7 @@ var retrieveClothingByTag = function(tag) {
 
 $(document).ready(function() {
     storageKeys = new StorageKeys();
-    //localStorage.clear();
+    localStorage.clear();
 
     //Initiate storage on first app start.
     if (typeof localStorage[storageKeys.tags] === "undefined") {
