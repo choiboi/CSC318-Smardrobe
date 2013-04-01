@@ -141,12 +141,13 @@ var deleteTag = function(tag) {
 //
 var addNewClothes = function(clothingBlob) {
     var clothesLocal = jQuery.parseJSON(localStorage[storageKeys.clothes]);
+    var id= "";
 
     // If clothBlob is a string.
     if (typeof clothingBlob === "string") {
-        var id = storageKeys.makeId();
+        id = storageKeys.makeId();
         // Make sure it doesn't use the same existing IDs.
-        while (typeof clothesLocal[ID] !== "undefined") {
+        while (typeof clothesLocal[id] !== "undefined") {
             id = storageKeys.makeId();
         }
         clothesLocal[id] = new Array();
@@ -155,9 +156,9 @@ var addNewClothes = function(clothingBlob) {
     // If clothBlob is a list of clothing blobs.
     } else if (clothingBlob instanceof Array) {
         for (var ind = 0; ind < clothingBlob.length; ind++) {
-            var id = storageKeys.makeId();
+            id = storageKeys.makeId();
             // Make sure it doesn't use the same existing IDs.
-            while (typeof clothesLocal[ID] !== "undefined") {
+            while (typeof clothesLocal[id] !== "undefined") {
                 id = storageKeys.makeId();
             }
             clothesLocal[id] = new Array();
@@ -166,6 +167,8 @@ var addNewClothes = function(clothingBlob) {
     }
 
     localStorage[storageKeys.clothes] = JSON.stringify(clothesLocal);
+
+    return id;
 };
 
 //
@@ -204,7 +207,6 @@ var deleteClothing = function(clothing) {
 var associateTagClothes = function(tag, clothing) {
     // To make sure they already exist in the database.
     addNewTag(tag);
-    addNewClothes(clothing);
 
     var tagsLocal = jQuery.parseJSON(localStorage[storageKeys.tags]);
     var clothesLocal = jQuery.parseJSON(localStorage[storageKeys.clothes]);
@@ -293,7 +295,12 @@ var retrieveClothingByTag = function(tag) {
 
 $(document).ready(function() {
     storageKeys = new StorageKeys();
-    localStorage.clear();
+    //localStorage.clear();
+
+    var isEmpty = false;
+    if (localStorage.length === 0) {
+        isEmpty = true;
+    }
 
     //Initiate storage on first app start.
     if (typeof localStorage[storageKeys.tags] === "undefined") {
@@ -304,6 +311,9 @@ $(document).ready(function() {
     }
     if (typeof localStorage[storageKeys.favs] === "undefined") {
         localStorage[storageKeys.favs] = JSON.stringify({});
+    }
+    if (isEmpty) {
+        app.initialize();
     }
 });
 

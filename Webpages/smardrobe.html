@@ -22,7 +22,7 @@
         <!-- Main Page -->
         <div data-role="page" id="smardrobe" data-position="fixed">
 
-            <div data-role="header">
+            <div data-role="header" data-position="fixed">
                 <h1>Smardrobe</h1>
                 <!-- Menu Button -->
                 <a data-role="button" href="#popupMenu" data-rel="popup" class="ui-btn-right">Menu</a>
@@ -49,6 +49,16 @@
                 <div id="weatherInfo" >
                     <p id="weatherInfoText"></p>
                 </div>
+
+                <!-- Display Clothing -->
+                <div class="ui-grid-solo" id="outfitContainer">
+                    <div id="top" class="ui-block-a" style="background: red; height: 120px;">
+                    </div>
+                    <div id="bottom" class="ui-block-a" style="background: green; height: 120px;">
+                    </div>
+                    <div id="shoe" class="ui-block-a" style="background: blue; height: 120px;">
+                    </div>   
+                </div>
             </div>
 
             <div data-role="footer" data-position="fixed" data-tap-toggle="false">
@@ -65,7 +75,10 @@
 
         <!-- Others -->
         <script type="text/javascript" src="js/smardrobeWeather.js"></script>
-        <script type="text/javascript" src="js/storeInformation.js"></script>
         <script type="text/javascript" src="js/clothesDatabase.js"></script>
+        <script type="text/javascript" src="js/storeInformation.js"></script>
+        <script type="text/javascript" src="js/initialize.js"></script>
+        <script type="text/javascript" src="js/outfitHandler.js"></script>
+        <script type="text/javascript" src="js/clothesEncodedString.js"></script>
     </body>
 </html>
