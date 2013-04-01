@@ -2,8 +2,10 @@ var pageNumber = 0;
 var maxPages = 0;
 var filterOptions = [];
 var selectedImage;
+var multiSelect = false;
+var multiClothes = [];
 var images = [];
-var displayLimit = 12;
+var displayLimit = 1;
 var x_start;
 
 
@@ -29,19 +31,69 @@ function touchEnd(e) {
 function loadPreviousPage() {
     if (pageNumber > 0) {
         pageNumber -= 1;
-        $.mobile.changePage($("#" + pageNumber), { transition: "slide", revserse: true});
+        $.mobile.changePage($("#page" + pageNumber), {
+            transition: "slide", 
+            revserse: true
+        });
     }
 }
 
 function loadNextPage() {
     if (pageNumber < maxPages) {
         pageNumber += 1;
-        $.mobile.changePage($("#" + pageNumber), { transition: "slide", revserse: false});
+        $.mobile.changePage($("#page" + pageNumber), {
+            transition: "slide", 
+            revserse: false
+        });
     }
 }
 
 var getClothingSuccess = function(clothing) {
     images.push(clothing);
+}
+
+var deleteFunction = function(event) {
+    event.stopImmediatePropagation();
+    event.preventDefault();    
+}
+
+//done
+var cancelFunction = function(event) {
+    event.stopImmediatePropagation();
+    event.preventDefault();
+    
+    multiSelect = false;
+    $("#delete").remove();
+    $("#cancel").remove();
+    $(".footer").append('<a href="wardrobe.html" data-role="button" id="multiSelect" rel="external" onclick="multiSelect(); return false">Multi Select</a>');
+    
+    $("#multiSelect").bind('tap', multiSelectFunction(event));
+}
+
+var imageSelectFunction = function(event) {
+    event.stopImmediatePropagation();
+    event.preventDefault();
+    
+    if (multiSelect) {
+        multiSelect.push(Number(event.currentTarget.id));
+        $("#" + event.currentTarget.id).css("opacity", 0.5);
+    } else {
+        zoomIn(Number(event.currentTarget.id));
+    }
+    
+}
+
+var multiSelectFunction = function(event) {
+    event.stopImmediatePropagation();
+    event.preventDefault();
+        
+    $("#multiSelect").remove();
+    $(".footer").append('<a href="wardrobe.html" data-role="button" id="delete" rel="external" onclick="delete(); return false">Delete</a>');
+    $(".footer").append('<a href="wardrobe.html" data-role="button" id="cancel" rel="external" onclick="cancel(); return false">Cancel</a>');
+    $("#delete").bind('tap', deleteFunction(event));
+    $("#cancel").bind('tap', cancelFunction(event));
+    multiSelect = true;
+    
 }
 
 function initializer(filterOps, image, disLimit) {
@@ -70,12 +122,12 @@ function initializer(filterOps, image, disLimit) {
     }
 
     while (hasNext) {
-        $("#mainBody").append('<div data-role="page" id="' + counter + '" data-theme="a"></div>');
-        $("#" + counter).append('<div data-role="header" data-theme="a" data-id="wardrobeHeader" data-position="fixed" class="header"></div>');
-        $("#" + counter).append('<div data-role="content" id="body' + counter + '"></div>');
+        $("#mainBody").append('<div data-role="page" id="page' + counter + '" data-theme="a"></div>');
+        $("#page" + counter).append('<div data-role="header" data-theme="a" data-id="wardrobeHeader" data-position="fixed" class="header"></div>');
+        $("#page" + counter).append('<div data-role="content" id="body' + counter + '"></div>');
         $("#body" + counter).append('<div class="ui-grid-b" id="grid' + counter + '"></div>');
         hasNext = imageListDisplay(counter);
-        $("#" + counter).append('<div id="footer" data-role="footer" data-position="fixed" data-theme="a"></div>');
+        $("#page" + counter).append('<div data-role="footer" data-position="fixed" data-theme="a" class="footer"></div>');
         counter += 1;
     }
 
@@ -83,7 +135,10 @@ function initializer(filterOps, image, disLimit) {
     $(".header").append('<a href="smardrobe.html" data-role="button" id="backButton">Back</a>');
     $(".header").append('<h4>Wardrobe</h4>');
     $(".header").append('<a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true">Filter</a>');
-
+    $(".footer").append('<a href="wardrobe.html" data-role="button" id="multiSelect" rel="external" onclick="multiSelect(); return false">Multi Select</a>');
+    
+    $("#multiSelect").bind('tap', multiSelectFunction(event));
+    $(".image").bind('tap', imageSelectFunction(event));
 }
 
 function imageListDisplay (counter) {
@@ -106,6 +161,7 @@ function imageListDisplay (counter) {
             image.src = "data:image/png;base64," + images[i];
             image.setAttribute('onclick', "zoomIn(" + i + ")");
             image.setAttribute('class', "image");
+            image.setAttribute('id', "" + i);
             
             div.setAttribute('class', "ui-block-" + letter);
             div.appendChild(image);
