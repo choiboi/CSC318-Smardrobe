@@ -13,7 +13,7 @@
 // @param nameID - Unique name of the clothing.
 // @param clothing - image blob.
 //
-var addNewClothing = function(nameID, clothing) {
+var addNewClothingDB = function(nameID, clothing) {
 	db.addClothing(nameID, clothing);
 };
 
@@ -24,7 +24,7 @@ var addNewClothing = function(nameID, clothing) {
 // @param nameID - Unique name of the clothing.
 // @param cb - Callback function.
 //
-var getClothing = function(nameID, cb) {
+var getClothingDB = function(nameID, cb) {
 	db.getClothing(nameID, cb);
 };
 
@@ -33,7 +33,7 @@ var getClothing = function(nameID, cb) {
 //
 // @param nameID - Unique name of the clothing.
 //
-var deleteClothing = function(nameID) {
+var deleteClothingDB = function(nameID) {
 	db.deleteClothing(nameID);
 };
 

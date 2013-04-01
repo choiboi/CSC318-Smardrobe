@@ -151,7 +151,7 @@ var addNewClothes = function(clothingBlob) {
             id = storageKeys.makeId();
         }
         clothesLocal[id] = new Array();
-        addNewClothing(id, clothingBlob);
+        addNewClothingDB(id, clothingBlob);
 
     // If clothBlob is a list of clothing blobs.
     } else if (clothingBlob instanceof Array) {
@@ -162,7 +162,7 @@ var addNewClothes = function(clothingBlob) {
                 id = storageKeys.makeId();
             }
             clothesLocal[id] = new Array();
-            addNewClothing(id, clothingBlob);
+            addNewClothingDB(id, clothingBlob);
         }
     }
 
@@ -284,7 +284,7 @@ var retrieveTagsByClothing = function(clothingFilename) {
 // @return an array of clothes filenames, otherwise null.
 //
 var retrieveClothingByTag = function(tag) {
-    var tagsLocal = jQuery.parseJSON(localStorage[storageKeys.tags]);
+    var tagsLocal = jQuery.parseJSON(localStorage['tags']);
 
     if (typeof tagsLocal[tag] === "undefined") {
         return null;
