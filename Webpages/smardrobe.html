@@ -38,7 +38,7 @@
                 </div>
             </div>
 
-            <div data-role="content">
+            <div data-role="content" id="mainInfo">
                 <!-- Displays Weather Icon, Current City, and Current Temperature -->
                 <div id="divMain">
                     <div id="divIcon"><img id="weatherIcon" /></div>
@@ -52,11 +52,14 @@
 
                 <!-- Display Clothing -->
                 <div class="ui-grid-solo" id="outfitContainer">
-                    <div id="top" class="ui-block-a" style="background: red; height: 120px;">
+                    <div id="top" class="ui-block-a">
+                        <div class="center"><img id="topImg"/></div>
                     </div>
-                    <div id="bottom" class="ui-block-a" style="background: green; height: 120px;">
+                    <div id="bottom" class="ui-block-a">
+                        <div class="center"><img id="bottomImg"/></div>
                     </div>
-                    <div id="shoe" class="ui-block-a" style="background: blue; height: 120px;">
+                    <div id="shoe" class="ui-block-a">
+                        <div class="center"><img id="shoeImg"/></div>
                     </div>   
                 </div>
             </div>
