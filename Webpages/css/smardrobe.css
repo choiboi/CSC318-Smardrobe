@@ -70,3 +70,10 @@
 	margin: 0 auto;
 	text-align: center;
 }
+
+.lockIconImg {
+	position: absolute;
+	left: 85%;
+	max-height: 10%;
+	max-width: 10%;
+}

@@ -18,7 +18,7 @@
         </script>
     </head>
 
-    <body id="mainBody" class="ui-mobile-viewport">
+    <body class="ui-mobile-viewport">
         <!-- Main Page -->
         <div data-role="page" id="smardrobe" data-position="fixed">
 
@@ -53,12 +53,15 @@
                 <!-- Display Clothing -->
                 <div class="ui-grid-solo" id="outfitContainer">
                     <div id="top" class="ui-block-a">
+                        <img class="lockIconImg" id="topIconImg" src="img/unlock.png"/>
                         <div class="center"><img id="topImg"/></div>
                     </div>
                     <div id="bottom" class="ui-block-a">
+                        <img class="lockIconImg" id="bottomIconImg" src="img/unlock.png"/>
                         <div class="center"><img id="bottomImg"/></div>
                     </div>
                     <div id="shoe" class="ui-block-a">
+                        <img class="lockIconImg" id="shoeIconImg" src="img/unlock.png"/>
                         <div class="center"><img id="shoeImg"/></div>
                     </div>   
                 </div>
@@ -69,6 +72,7 @@
                 <a id="favButton" href="#" data-role="button" data-icon="star" data-transition="none" data-theme="b">Favourite</a>
             </div>
         </div>
+
         <!-- Cordova Files -->
         <script type="text/javascript" src="js-framework/cordova-2.5.0.js"></script>
 
