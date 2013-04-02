@@ -20,21 +20,6 @@ $(document).ready(function() {
     initializer(0, 3);
 });
 
-
-function touchStart(e) {
-    var touch = e.touches[0];
-    x_start = touch.pageX;
-}
-
-function touchEnd(e) {
-    var touch = e.touches[0];
-    if (x_start - touch.pageX > 50) {
-        loadPreviousPage();
-    } else if (x_start - touch.pageX < -50) {
-        loadNextPage();
-    }
-}
-
 function loadPreviousPage() {
     if (pageNumber > 0) {
         pageNumber -= 1;
@@ -53,10 +38,6 @@ function loadNextPage() {
             reverse: false
         });
     }
-}
-
-var getClothingSuccess = function(clothing) {
-    images.push(clothing);
 }
 
 var deleteFunction = function(event) {
