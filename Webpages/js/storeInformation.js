@@ -310,7 +310,6 @@ var listClothes = function() {
     
     for (var key in clothesLocal) {
         if (clothesLocal.hasOwnProperty(key)) {
-            var clothesL = favsLocal[key];
 
             // Go through the list of clothes.
             keys.push(key);
