@@ -6,6 +6,8 @@ var currTop;
 var currBottom;
 var currShoe;
 
+var isLocked;
+
 var topCategories = ['outerwear', 'tshirt'];
 var bottomCategories = ['pant'];
 var shoeCategories = ['shoe'];
@@ -128,6 +130,28 @@ var swipedShoe = function(direction) {
 	}
 };
 
+var lock = function(index, tagID) {
+	if (isLocked[index]) {
+		$(tagID).attr('src', 'img/unlock.png');
+		isLocked[index] = false;
+	} else {
+		$(tagID).attr('src', 'img/lock.png');
+		isLocked[index] = true;
+	}
+};
+
+$('#top').click(function() {
+	lock(0, '#topIconImg');
+});
+
+$('#bottom').click(function() {
+	lock(1, '#bottomIconImg');
+});
+
+$('#shoe').click(function() {
+	lock(2, '#shoeIconImg');
+});
+
 $('#genOutfitButton').click(function() {
 	generateOutfit();
 });
@@ -165,6 +189,8 @@ $(document).ready(function() {
 	$('#shoe').on('swiperight', function() {
 		swipedShoe(1);
 	});
+
+	isLocked = new Array(false, false, false);
 
 	getListOfTop();
 	getListOfBottom();
