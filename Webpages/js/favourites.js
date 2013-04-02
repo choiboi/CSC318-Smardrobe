@@ -234,8 +234,8 @@ function initializer(image, disLimit) {
     }
     
     
-    favouriteOutfits = [[clothesTop[0], clothesBottom[0], clothesShoe[0]],[clothesTop[1], clothesBottom[1], clothesShoe[2]],[clothesTop[0], clothesBottom[2], clothesShoe[4]]];
-    favouriteNames = [0, 1, 2];
+    favouriteOutfits = [[clothesTop[0], clothesBottom[0], clothesShoe[0]],[clothesTop[1], clothesBottom[1], clothesShoe[2]],[clothesTop[0], clothesBottom[2], clothesShoe[4]],[clothesTop[4], clothesBottom[3], clothesShoe[2]]];
+    favouriteNames = [0, 1, 2, 3];
     //favouriteOutfits = result[1];
     
     if (favouriteNames.length < 1) {
