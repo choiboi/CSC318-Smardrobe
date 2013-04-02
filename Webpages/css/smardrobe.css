@@ -77,3 +77,29 @@
 	max-height: 8%;
 	max-width: 8%;
 }
+
+.leftArrow {
+	position: absolute;
+	left: -2%;
+	max-height: 20%;
+	max-width: 15%;
+}
+
+.rightArrow {
+	position: absolute;
+	left: 87%;
+	max-height: 20%;
+	max-width: 15%;
+}
+
+.topArrow {
+	top: 37%;
+}
+
+.bottomArrow {
+	top: 62%;
+}
+
+.shoeArrow {
+	top: 83%
+}
