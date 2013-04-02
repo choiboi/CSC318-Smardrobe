@@ -228,7 +228,14 @@ function initializer(image, disLimit) {
         }
     } else if (image == 0) {
         clothingNames = listClothes();
-    } 
+    }
+    
+    if (filterOptions.length < 1) {
+        $(".backButton").bind('tap click', function(event) {
+            window.location = "smardrobe.html";
+        });
+        return;
+    }
     
     
     

@@ -206,9 +206,10 @@ function initializer(image, disLimit) {
     displayLimit = disLimit;
     selectedImage = image;
     
-    var result = listFavourites();
-    favouriteNames = result[0];
-    favouriteOutfits = result[1];
+    
+    favouriteOutfits = [];
+    favouriteNames = [0];
+    //favouriteOutfits = result[1];
     
     if (favouriteNames.length < 1) {
     
