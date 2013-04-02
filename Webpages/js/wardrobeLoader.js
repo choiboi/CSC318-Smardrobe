@@ -8,7 +8,7 @@ var images = [];
 var displayLimit = 3;
 var x_start;
 var clothingNames = [];
-/*
+
 $(document).ready(function() {
     $('#mainBody').on('swipeleft', function() {
         loadNextPage();
@@ -19,7 +19,7 @@ $(document).ready(function() {
     
     initializer(0, 3);
 });
-*/
+
 
 function touchStart(e) {
     var touch = e.touches[0];
@@ -64,7 +64,9 @@ var deleteFunction = function(event) {
     event.preventDefault();
     
     if (multiSelect) {
-        multiClothes.sort(function(a,b){return a-b});
+        multiClothes.sort(function(a,b){
+            return a-b
+        });
         for (var i = 0; i < multiClothes.length; i++) {
             deleteClothing(clothingNames[multiClothes[i] - i]);
             deleteClothingDB(clothingNames[multiClothes[i] - i]);
@@ -130,11 +132,11 @@ var deleteFunction = function(event) {
         
         if (pageNumber > maxPages - 1) {
             pageNumber = maxPages - 1;
-            $.mobile.changePage($("#page" + pageNumber), {
-                transition: "slide", 
-                reverse: false
-            });
         }
+        $.mobile.changePage($("#page" + pageNumber), {
+            transition: "slide", 
+            reverse: false
+        });
     }
 }
 
@@ -203,31 +205,31 @@ function initializer(image, disLimit) {
     for (var i = 0; i < filterOptions.length; i++) {
         clothingNames = clothingNames.concat(retrieveClothingByTag(filterOptions[i]));
     }
-    
+    /*
     for (i = 0; i < clothingNames.length; i++) {
-        alert(clothingNames[i]);
+        //alert(clothingNames[i]);
         getClothingDB(clothingNames[i], function(clothing) {
-            alert(clothing);
-            images.push(clothing);
+            //alert(clothing);
+            images[i] = clothing;
         });
     }
+    */
     
-    alert(images.length);
     var counter = 0;
     var hasNext;
     
-    if (images.length > 0) {
+    if (clothingNames.length > 0) {
         hasNext = true;
     } else {
         hasNext = false;
     }
 
     while (hasNext) {
-            $("#mainBody").append('<div data-role="page" id="page' + counter + '" data-theme="a"></div>');
-            $("#page" + counter).append('<div data-role="header" data-theme="a" data-id="wardrobeHeader" data-position="fixed" class="header"></div>');
-            $("#page" + counter).append('<div data-role="content" id="body' + counter + '"></div>');
-            $("#body" + counter).append('<div class="ui-grid-b" id="grid' + counter + '"></div>');
-            $("#page" + counter).append('<div data-role="footer" data-position="fixed" data-theme="a" class="footer"></div>');
+        $("#mainBody").append('<div data-role="page" id="page' + counter + '" data-theme="a"></div>');
+        $("#page" + counter).append('<div data-role="header" data-theme="a" data-id="wardrobeHeader" data-position="fixed" class="header"></div>');
+        $("#page" + counter).append('<div data-role="content" id="body' + counter + '"></div>');
+        $("#body" + counter).append('<div class="ui-grid-b" id="grid' + counter + '"></div>');
+        $("#page" + counter).append('<div data-role="footer" data-position="fixed" data-theme="a" class="footer"></div>');
         
         
         hasNext = imageListDisplay(counter);
@@ -242,12 +244,26 @@ function initializer(image, disLimit) {
     $(".footer").append('<a href="#" data-role="button" id="multiSelect">Multi Select</a>');
     
     $("#backButton").bind('tap click', function(event) {
+        window.location = smardrobe.html;
+        /*
         $.mobile.changePage($("#smardrobe"), {
             transition: "slide", 
-            reverse: true
+            reverse: false
         });
+        for (i = 0; i < maxPages; i++) {
+            $("#page" + i).remove();
+        }
+        $("#smardrobe").trigger('create');
+        */
     });
     
+    getClothingDB(clothingNames[0], function(clothing) {
+        //alert(clothing);
+        $('#' + 0).attr('src', clothing);
+        recursiveAdd(1);
+                
+    });
+            
     $("#multiSelect").bind('tap click', function(event) {
         return multiSelectFunction(event);
     });
@@ -265,14 +281,28 @@ function initializer(image, disLimit) {
     $("#bodyImage").append('<div class="ui-grid-solo" id="gridImage"></div>');
     $("#pageImage").append('<div data-role="footer" data-position="fixed" data-theme="a" id="imageFooter"></div>');
     $("#imageFooter").append('<a href="#" data-role="button" id="imageDelete">Delete</a>');
+    $("#gridImage").append('<div class="ui-block-a><img src="" id="zoomedImage"></div>');
+    
     
     $("#imageDelete").bind('tap', function(event) {
         deleteFunction(event);
     });
     
-    $.mobile.changePage($("#page" + "0"), {
-        transition: "slide", 
-        reverse: false
+
+}
+
+function recursiveAdd(i) {
+    if (i >= clothingNames.length) {
+        $.mobile.changePage($("#page" + "0"), {
+            transition: "slide", 
+            reverse: false
+        });
+        return;
+    }
+    getClothingDB(clothingNames[i], function(clothing) {
+        //alert(clothing);
+        $('#' + i).attr('src', clothing);
+        recursiveAdd(i + 1);
     });
 }
 
@@ -281,7 +311,7 @@ function imageListDisplay (counter) {
     var letter = "a";
 
     for (var i = counter * displayLimit; i < (counter + 1) * displayLimit; i++) {
-        if (i < images.length) {
+        if (i < clothingNames.length) {
             if (i % 3 == 0) {
                 letter = "a";
             } else if (i % 3 == 1) {
@@ -293,7 +323,8 @@ function imageListDisplay (counter) {
             var div = document.createElement("div");
             var image = document.createElement("img");
 
-            image.src = "" + images[i];
+            image.src = "";
+            
             //image.setAttribute('onclick', "zoomIn(" + i + ")");
             image.setAttribute('class', "image");
             image.setAttribute('id', "" + i);
@@ -302,6 +333,7 @@ function imageListDisplay (counter) {
             div.appendChild(image);
             
             $("#grid" + counter).append(div);
+            
         //gridContents += '<div class="ui-block-' + letter + '"><img src="images/' + images[i] + '" alt="Clothing image" onclick="zoomIn(' + images[i] + ')"></div>';
         } else {
             return false;
@@ -318,14 +350,15 @@ function writeString (string) {
 }
 
 function zoomIn(imageNumber) {
-    var image = document.createElement("img");
-
-    image.src = "" + images[imageNumber];
-    $("#gridImage").append(image)
-    $.mobile.changePage($("#page" + pageNumber), {
+    getClothingDB(clothingNames[imageNumber], function(clothing) {
+        //alert(clothing);
+        $('#zoomedImage').attr('src', clothing);
+        $.mobile.changePage($("#pageImage"), {
             transition: "slide", 
             reverse: false
-        });
+        });    
+    });
+    
 }
 
 function loadBack() {
