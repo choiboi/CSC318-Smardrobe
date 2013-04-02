@@ -155,7 +155,7 @@ var cancelFunction = function(event) {
     
     multiClothes = [];
     
-    $("#multiSelect").bind('tap', function(event) {
+    $(".multiSelect").bind('tap click', function(event) {
         multiSelectFunction(event);
     });
     
@@ -187,9 +187,10 @@ var multiSelectFunction = function(event) {
     event.stopImmediatePropagation();
     event.preventDefault();
         
-    $("#multiSelect").remove();
+    $(".multiSelect").remove();
     $(".footer").append('<a href="#" data-role="button" id="delete" rel="external" >Delete</a>');
     $(".footer").append('<a href="#" data-role="button" id="cancel" rel="external" >Cancel</a>');
+    
     $("#delete").bind('tap click', function(event) {
         deleteFunction(event);
     });
@@ -290,14 +291,14 @@ function initializer(image, disLimit) {
     
     maxPages = counter;
     
-    $(".header").append("<a href=''' data-role='button' id='backButton' class='ui-btn-left' class='backButton'>Back</a>");
+    $(".header").append("<a href='' data-role='button' id='backButton' class='backButton' >Back</a>");
     $(".header").append('<h4>Favourites</h4>');
     $(".header").append('<a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true" class="ui-btn-right">Filter</a>');
     $(".footer").append('<a href="#" data-role="button" id="multiSelect" class="multiSelect">Multi Select</a>');
     
     $(".backButton").bind('tap click', function(event) {
         window.location = "smardrobe.html";
-    /*
+        /*
         $.mobile.changePage($("#smardrobe"), {
             transition: "slide", 
             reverse: false

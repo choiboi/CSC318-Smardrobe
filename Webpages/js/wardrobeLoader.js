@@ -160,7 +160,7 @@ var cancelFunction = function(event) {
     multiSelect = false;
     $("#delete").remove();
     $("#cancel").remove();
-    $(".footer").append('<a href="#" data-role="button" id="multiSelect" rel="external" onclick="multiSelectFuntion(); return false">Multi Select</a>');
+    $(".footer").append('<a href="#" data-role="button" id="multiSelect" rel="external" class="multiSelect">Multi Select</a>');
     
     for (var i = 0; i < multiClothes.length; i++) {
         $("#" + multiClothes[i]).css("opacity", 1);
@@ -265,7 +265,7 @@ function initializer(image, disLimit) {
     
     maxPages = counter;
     
-    $(".header").append("<a href=''' data-role='button' id='backButton' class='backButton' >Back</a>");
+    $(".header").append("<a href='' data-role='button' id='backButton' class='backButton' >Back</a>");
     $(".header").append('<h4>Wardrobe</h4>');
     $(".header").append('<a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true" class="ui-btn-right">Filter</a>');
     $(".footer").append('<a href="#" data-role="button" id="multiSelect" class="multiSelect">Multi Select</a>');
