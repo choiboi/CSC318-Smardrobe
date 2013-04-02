@@ -287,8 +287,12 @@ function initializer(image, disLimit) {
     getClothingDB(clothingNames[0], function(clothing) {
         //alert(clothing);
         $('#' + 0).attr('src', clothing);
+        $.mobile.changePage($("#page" + "0"), {
+            transition: "slide", 
+            reverse: false
+        });
         recursiveAdd(1);
-                
+        
     });
             
     $(".multiSelect").bind('tap click', function(event) {

@@ -46,7 +46,9 @@ var deleteFunction = function(event) {
     event.preventDefault();
     
     if (multiSelect) {
-        multiClothes.sort(function(a,b){return a-b});
+        multiClothes.sort(function(a,b){
+            return a-b
+            });
         for (var i = 0; i < multiClothes.length; i++) {
             deleteFavourite(favouriteNames[multiClothes[i] - i]);
             favouriteNames.splice(multiClothes[i] - i, 1);
@@ -124,16 +126,16 @@ var deleteFunction = function(event) {
         }
         
         getClothingDB(favouriteOutfits[0][0], function(clothing) {
-                //alert(clothing);
-                $('#image' + 0).attr('src', clothing);
-                recursiveAdd(1);
+            //alert(clothing);
+            $('#image' + 0).attr('src', clothing);
+            recursiveAdd(1);
                 
-            });
+        });
             
         $.mobile.changePage($("#page" + pageNumber), {
-                transition: "slide", 
-                reverse: false
-            });
+            transition: "slide", 
+            reverse: false
+        });
     }
 }
 
@@ -208,6 +210,32 @@ function initializer(image, disLimit) {
     alert(result[0]);
     favouriteNames = result[0];
     favouriteOutfits = result[1];
+    if (typeof favouriteNames === undefined) {
+        $("#mainBody").append('<div data-role="page" id="page' + 0 + '" data-theme="a"></div>');
+        $("#page" + 0).append('<div data-role="header" data-theme="a" data-id="wardrobeHeader" data-position="fixed" class="header"></div>');
+        $("#page" + 0).append('<div data-role="content" id="body' + 0 + '"></div>');
+        $("#body" + 0).append('<div class="ui-grid-b" id="grid' + 0 + '"></div>');
+        $("#page" + 0).append('<div data-role="footer" data-position="fixed" data-theme="a" class="footer"></div>');
+        
+        $(".header").append("<a href=''' data-role='button' id='backButton' class='ui-btn-left' class='backButton'>Back</a>");
+        $(".header").append('<h4>Favourites</h4>');
+        $(".header").append('<a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true" class="ui-btn-right">Filter</a>');
+        $(".footer").append('<a href="#" data-role="button" id="multiSelect" class="multiSelect">Multi Select</a>');
+    
+        $(".backButton").bind('tap click', function(event) {
+            window.location = "smardrobe.html";
+        /*
+        $.mobile.changePage($("#smardrobe"), {
+            transition: "slide", 
+            reverse: false
+        });
+        for (i = 0; i < maxPages; i++) {
+            $("#page" + i).remove();
+        }
+        $("#smardrobe").trigger('create');
+        */
+        });
+    }
     /*
     for (i = 0; i < favouriteNames.length; i++) {
         //alert(favouriteNames[i]);
@@ -242,13 +270,13 @@ function initializer(image, disLimit) {
     maxPages = counter;
     
     $(".header").append("<a href=''' data-role='button' id='backButton' class='ui-btn-left' class='backButton'>Back</a>");
-    $(".header").append('<h4>Wardrobe</h4>');
+    $(".header").append('<h4>Favourites</h4>');
     $(".header").append('<a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true" class="ui-btn-right">Filter</a>');
     $(".footer").append('<a href="#" data-role="button" id="multiSelect" class="multiSelect">Multi Select</a>');
     
     $(".backButton").bind('tap click', function(event) {
         window.location = "smardrobe.html";
-        /*
+    /*
         $.mobile.changePage($("#smardrobe"), {
             transition: "slide", 
             reverse: false
@@ -275,21 +303,9 @@ function initializer(image, disLimit) {
         imageSelectFunction(event);
     });
     
-    //$("#page0").trigger("create");
+//$("#page0").trigger("create");
     
-    //creating the image page for zoomed in images
-    $("#mainBody").append('<div data-role="page" id="pageImage" data-theme="a"></div>');
-    $("#pageImage").append('<div data-role="header" data-theme="a" data-id="wardrobeHeader" data-position="fixed" id="imageHeader" data-add-back-btn="true"></div>');
-    $("#pageImage").append('<div data-role="content" id="bodyImage"></div>');
-    $("#bodyImage").append('<div class="ui-grid-solo" id="gridImage"></div>');
-    $("#pageImage").append('<div data-role="footer" data-position="fixed" data-theme="a" id="imageFooter"></div>');
-    $("#imageFooter").append('<a href="#" data-role="button" id="imageDelete">Delete</a>');
-    $("#gridImage").append('<div class="ui-block-a><img src="" id="zoomedImage"></div>');
-    
-    
-    $("#imageDelete").bind('tap', function(event) {
-        deleteFunction(event);
-    });
+//creating the image page for zoomed in images
     
 
 }
