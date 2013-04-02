@@ -34,10 +34,14 @@ var getListOfShoes = function() {
 	}
 };
 
-var setupOutfit = function() {
-	currTop = clothesTop[0];
-	currBottom = clothesBottom[0];
-	currShoe = clothesShoe[0];
+var generateOutfit = function() {
+	var indT = Math.floor(Math.random()*(clothesTop.length - 1));
+	var indB = Math.floor(Math.random()*(clothesBottom.length - 1));
+	var indS = Math.floor(Math.random()*(clothesShoe.length - 1));
+
+	currTop = clothesTop[indT];
+	currBottom = clothesBottom[indB];
+	currShoe = clothesShoe[indS];
 
 	getClothingDB(currTop, function(c) {
 		$('#topImg').attr('src', c);
@@ -124,6 +128,10 @@ var swipedShoe = function(direction) {
 	}
 };
 
+$('#genOutfitButton').click(function() {
+	generateOutfit();
+});
+
 $('#favButton').click(function() {
 	var favList = new Array(currTop, currBottom, currShoe);
 	addFavorite(favList);
@@ -162,5 +170,5 @@ $(document).ready(function() {
 	getListOfBottom();
 	getListOfShoes();
 
-	setupOutfit();
+	generateOutfit();
 });
