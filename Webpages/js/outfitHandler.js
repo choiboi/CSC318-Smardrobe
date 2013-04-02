@@ -45,17 +45,21 @@ var generateOutfit = function() {
 	currBottom = clothesBottom[indB];
 	currShoe = clothesShoe[indS];
 
-	getClothingDB(currTop, function(c) {
-		$('#topImg').attr('src', c);
-	});
-
-	getClothingDB(currBottom, function(c) {
-		$('#bottomImg').attr('src', c);
-	});
-
-	getClothingDB(currShoe, function(c) {
-		$('#shoeImg').attr('src', c);
-	});
+	if (!isLocked[0]) {
+		getClothingDB(currTop, function(c) {
+			$('#topImg').attr('src', c);
+		});
+	}
+	if (!isLocked[1]) {
+		getClothingDB(currBottom, function(c) {
+			$('#bottomImg').attr('src', c);
+		});
+	}
+	if (!isLocked[2]) {
+		getClothingDB(currShoe, function(c) {
+			$('#shoeImg').attr('src', c);
+		});
+	}
 };
 
 var swipedTop = function(direction) {
