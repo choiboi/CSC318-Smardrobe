@@ -5,7 +5,7 @@ var selectedImage;
 var multiSelect = false;
 var multiClothes = [];
 var images = [];
-var displayLimit = 3;
+var displayLimit = 6;
 var x_start;
 var clothingNames = [];
 
@@ -17,7 +17,7 @@ $(document).ready(function() {
         loadPreviousPage();
     });
     
-    initializer(0, 3);
+    initializer(0, 6);
 });
 
 
@@ -93,6 +93,13 @@ var deleteFunction = function(event) {
                 counter += 1;
             }
             
+            getClothingDB(clothingNames[0], function(clothing) {
+                //alert(clothing);
+                $('#' + 0).attr('src', clothing);
+                recursiveAdd(1);
+                
+            });
+    
             maxPages = counter;
             
             if (pageNumber > maxPages - 1) {
@@ -128,6 +135,13 @@ var deleteFunction = function(event) {
             
         maxPages = counter;
         
+        getClothingDB(clothingNames[pageNumber * displayLimit], function(clothing) {
+            //alert(clothing);
+            $('#' + 0).attr('src', clothing);
+            recursiveAdd(pageNumber * displayLimit + 1);
+                
+        });
+        
         if (pageNumber > maxPages - 1) {
             pageNumber = maxPages - 1;
         }
@@ -154,7 +168,7 @@ var cancelFunction = function(event) {
     
     multiClothes = [];
     
-    $("#multiSelect").bind('tap', function(event) {
+    $(".multiSelect").bind('tap', function(event) {
         multiSelectFunction(event);
     });
     
@@ -186,13 +200,13 @@ var multiSelectFunction = function(event) {
     event.stopImmediatePropagation();
     event.preventDefault();
         
-    $("#multiSelect").remove();
+    $(".multiSelect").remove();
     $(".footer").append('<a href="#" data-role="button" id="delete" rel="external" >Delete</a>');
     $(".footer").append('<a href="#" data-role="button" id="cancel" rel="external" >Cancel</a>');
-    $("#delete").bind('tap', function(event) {
+    $("#delete").bind('click tap', function(event) {
         deleteFunction(event);
     });
-    $("#cancel").bind('tap', function(event) {
+    $("#cancel").bind('click tap', function(event) {
         cancelFunction(event);
     });
     
@@ -205,14 +219,17 @@ function initializer(image, disLimit) {
     displayLimit = disLimit;
     selectedImage = image;
     
-    if (image == 0) {
-        clothingNames = listClothes();
-    } else {
+    if (image != 0) {
         filterOptions = retrieveTagsByClothing(image);
+    }
+    if (filterOptions.length > 0) {
         for (var i = 0; i < filterOptions.length; i++) {
             clothingNames = clothingNames.concat(retrieveClothingByTag(filterOptions[i]));
         }
-    }
+    } else if (image == 0) {
+        clothingNames = listClothes();
+    } 
+    
     
     
     /*
@@ -248,13 +265,13 @@ function initializer(image, disLimit) {
     
     maxPages = counter;
     
-    $(".header").append("<a href=''' data-role='button' id='backButton' class='ui-btn-left' >Back</a>");
+    $(".header").append("<a href=''' data-role='button' id='backButton' class='backButton' >Back</a>");
     $(".header").append('<h4>Wardrobe</h4>');
     $(".header").append('<a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true" class="ui-btn-right">Filter</a>');
-    $(".footer").append('<a href="#" data-role="button" id="multiSelect">Multi Select</a>');
+    $(".footer").append('<a href="#" data-role="button" id="multiSelect" class="multiSelect">Multi Select</a>');
     
-    $("#backButton").bind('tap click', function(event) {
-        window.location = smardrobe.html;
+    $(".backButton").bind('tap click', function(event) {
+        window.location = "smardrobe.html";
         /*
         $.mobile.changePage($("#smardrobe"), {
             transition: "slide", 
@@ -274,7 +291,7 @@ function initializer(image, disLimit) {
                 
     });
             
-    $("#multiSelect").bind('tap click', function(event) {
+    $(".multiSelect").bind('tap click', function(event) {
         return multiSelectFunction(event);
     });
     
@@ -286,15 +303,23 @@ function initializer(image, disLimit) {
     
     //creating the image page for zoomed in images
     $("#mainBody").append('<div data-role="page" id="pageImage" data-theme="a"></div>');
-    $("#pageImage").append('<div data-role="header" data-theme="a" data-id="wardrobeHeader" data-position="fixed" id="imageHeader" data-add-back-btn="true"></div>');
+    $("#pageImage").append('<div data-role="header" data-theme="a" data-id="wardrobeHeader" data-position="fixed" id="imageHeader"></div>');
+    $("#imageHeader").append("<a href=''' data-role='button' id='imageBackButton'>Back</a>");
+    $("#imageHeader").append('<h4>Clothing</h4>');
     $("#pageImage").append('<div data-role="content" id="bodyImage"></div>');
     $("#bodyImage").append('<div class="ui-grid-solo" id="gridImage"></div>');
     $("#pageImage").append('<div data-role="footer" data-position="fixed" data-theme="a" id="imageFooter"></div>');
     $("#imageFooter").append('<a href="#" data-role="button" id="imageDelete">Delete</a>');
-    $("#gridImage").append('<div class="ui-block-a><img src="" id="zoomedImage"></div>');
+    $("#gridImage").append('<div class="ui-block-a"><img src="" id="zoomedImage"></div>');
     
+    $("#imageBackButton").bind('tap click', function(event) {
+        $.mobile.changePage($("#page" + pageNumber), {
+            transition: "slide", 
+            reverse: false
+        });
+    });
     
-    $("#imageDelete").bind('tap', function(event) {
+    $("#imageDelete").bind('tap click', function(event) {
         deleteFunction(event);
     });
     
@@ -362,7 +387,7 @@ function writeString (string) {
 function zoomIn(imageNumber) {
     getClothingDB(clothingNames[imageNumber], function(clothing) {
         //alert(clothing);
-        $('#zoomedImage').attr('src', clothing);
+        $('#zoomedImage').attr("src", clothing);
         $.mobile.changePage($("#pageImage"), {
             transition: "slide", 
             reverse: false
