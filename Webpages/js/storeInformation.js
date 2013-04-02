@@ -26,6 +26,7 @@ var addFavorite = function(clothes) {
 //
 var favExists = function(clothes) {
     var favsLocal = jQuery.parseJSON(localStorage[storageKeys.favs]);
+    var counter = 0;
 
     // Go through all the keys in favs JSON object.
     for (var key in favsLocal) {
@@ -34,14 +35,19 @@ var favExists = function(clothes) {
 
             // Go through the list of clothes.
             for (var ind = 0; ind < clothesL.length; ind++) {
-                if (clothes.indexOf(clothesL[ind]) < 0) {
-                    return false;
+                if (clothes.indexOf(clothesL[ind]) >= 0) {
+                    counter += 1;
                 }
             }
+
+            if (counter === clothes.length) {
+                return true;
+            }
+            counter = 0;
         }
     }
 
-    return true;
+    return false;
 };
 
 //

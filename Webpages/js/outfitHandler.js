@@ -68,6 +68,12 @@ var swipedTop = function(direction) {
 	getClothingDB(currTop, function(c) {
 		$('#topImg').attr('src', c);
 	});
+
+	if (favExists(new Array(currTop, currBottom, currShoe))) {
+		$('#favButton').buttonMarkup({ theme: "e" }).button('refresh');;
+	} else {
+		$('#favButton').buttonMarkup({ theme: "b" }).button('refresh');;
+	}
 };
 
 var swipedBottom = function(direction) {
@@ -86,6 +92,12 @@ var swipedBottom = function(direction) {
 	getClothingDB(currBottom, function(c) {
 		$('#bottomImg').attr('src', c);
 	});
+
+	if (favExists(new Array(currTop, currBottom, currShoe))) {
+		$('#favButton').buttonMarkup({ theme: "e" }).button('refresh');;
+	} else {
+		$('#favButton').buttonMarkup({ theme: "b" }).button('refresh');;
+	}
 };
 
 var swipedShoe = function(direction) {
@@ -104,12 +116,18 @@ var swipedShoe = function(direction) {
 	getClothingDB(currShoe, function(c) {
 		$('#shoeImg').attr('src', c);
 	});
+
+	if (favExists(new Array(currTop, currBottom, currShoe))) {
+		$('#favButton').buttonMarkup({ theme: "e" }).button('refresh');;
+	} else {
+		$('#favButton').buttonMarkup({ theme: "b" }).button('refresh');;
+	}
 };
 
 $('#favButton').click(function() {
 	var favList = new Array(currTop, currBottom, currShoe);
 	addFavorite(favList);
-	$('#favButton').attr('data-theme', 'e');
+	$('#favButton').buttonMarkup({ theme: "e" }).button('refresh');;
 });
 
 $(document).ready(function() {
