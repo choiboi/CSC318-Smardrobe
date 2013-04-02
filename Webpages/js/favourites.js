@@ -207,20 +207,10 @@ function initializer(image, disLimit) {
     selectedImage = image;
     
     var result = listFavourites();
-    alert(result[0]);
     favouriteNames = result[0];
     favouriteOutfits = result[1];
-    if (typeof favouriteNames === undefined) {
-        $("#mainBody").append('<div data-role="page" id="page' + 0 + '" data-theme="a"></div>');
-        $("#page" + 0).append('<div data-role="header" data-theme="a" data-id="wardrobeHeader" data-position="fixed" class="header"></div>');
-        $("#page" + 0).append('<div data-role="content" id="body' + 0 + '"></div>');
-        $("#body" + 0).append('<div class="ui-grid-b" id="grid' + 0 + '"></div>');
-        $("#page" + 0).append('<div data-role="footer" data-position="fixed" data-theme="a" class="footer"></div>');
-        
-        $(".header").append("<a href=''' data-role='button' id='backButton' class='ui-btn-left' class='backButton'>Back</a>");
-        $(".header").append('<h4>Favourites</h4>');
-        $(".header").append('<a href="#popupMenu" data-rel="popup" data-role="button" data-inline="true" class="ui-btn-right">Filter</a>');
-        $(".footer").append('<a href="#" data-role="button" id="multiSelect" class="multiSelect">Multi Select</a>');
+    
+    if (favouriteNames.length < 1) {
     
         $(".backButton").bind('tap click', function(event) {
             window.location = "smardrobe.html";
@@ -235,6 +225,10 @@ function initializer(image, disLimit) {
         $("#smardrobe").trigger('create');
         */
         });
+        $(".multiSelect").bind('tap click', function(event) {
+            return multiSelectFunction(event);
+        });
+        return;
     }
     /*
     for (i = 0; i < favouriteNames.length; i++) {
