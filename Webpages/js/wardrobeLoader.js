@@ -8,7 +8,7 @@ var images = [];
 var displayLimit = 3;
 var x_start;
 var clothingNames = [];
-
+/*
 $(document).ready(function() {
     $('#mainBody').on('swipeleft', function() {
         loadNextPage();
@@ -19,7 +19,7 @@ $(document).ready(function() {
     
     initializer(0, 3);
 });
-
+*/
 
 function touchStart(e) {
     var touch = e.touches[0];
@@ -199,25 +199,20 @@ function initializer(image, disLimit) {
     displayLimit = disLimit;
     selectedImage = image;
     filterOptions = ["shoe"];
-    images[0] = ClothesData.coat1;
-    images[1] = ClothesData.coat2;
-    images[2] = ClothesData.coat3;
-    images[3] = ClothesData.coat4;
     
-/*
     for (var i = 0; i < filterOptions.length; i++) {
         clothingNames = clothingNames.concat(retrieveClothingByTag(filterOptions[i]));
     }
     
-    
     for (i = 0; i < clothingNames.length; i++) {
-        
+        alert(clothingNames[i]);
         getClothingDB(clothingNames[i], function(clothing) {
+            alert(clothing);
             images.push(clothing);
         });
     }
-*/
     
+    alert(images.length);
     var counter = 0;
     var hasNext;
     
@@ -247,7 +242,10 @@ function initializer(image, disLimit) {
     $(".footer").append('<a href="#" data-role="button" id="multiSelect">Multi Select</a>');
     
     $("#backButton").bind('tap click', function(event) {
-        window.location = "smardrobe.html";
+        $.mobile.changePage($("#smardrobe"), {
+            transition: "slide", 
+            reverse: true
+        });
     });
     
     $("#multiSelect").bind('tap click', function(event) {
@@ -272,6 +270,10 @@ function initializer(image, disLimit) {
         deleteFunction(event);
     });
     
+    $.mobile.changePage($("#page" + "0"), {
+        transition: "slide", 
+        reverse: false
+    });
 }
 
 function imageListDisplay (counter) {

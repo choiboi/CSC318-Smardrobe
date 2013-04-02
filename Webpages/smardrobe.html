@@ -18,7 +18,7 @@
         </script>
     </head>
 
-    <body class="ui-mobile-viewport">
+    <body id="mainBody" class="ui-mobile-viewport">
         <!-- Main Page -->
         <div data-role="page" id="smardrobe" data-position="fixed">
 
@@ -33,7 +33,7 @@
                         <li data-role="divider" data-theme="a">Menu</li>
                         <li><a href="" onclick="changePage('addClothing.html');" data-transition="none">Add New Clothes</a></li>
                         <li><a href="" onclick="changePage('favourites.html');" data-transition="none">View Favourites</a></li>
-                        <li><a href="" onclick="changePage('wardrobe.html');" data-transition="none">View Wardrobe</a></li>
+                        <li><a href="" onclick="initializer(0, 3);" data-transition="none">View Wardrobe</a></li>
                     </ul>
                 </div>
             </div>
@@ -83,5 +83,6 @@
         <script type="text/javascript" src="js/smardrobeWeather.js"></script>
         <script type="text/javascript" src="js/storeInformation.js"></script>
         <script type="text/javascript" src="js/outfitHandler.js"></script>
+        <script type="text/javascript" src="js/wardrobeLoader.js"></script>
     </body>
 </html>
