@@ -206,9 +206,35 @@ function initializer(image, disLimit) {
     displayLimit = disLimit;
     selectedImage = image;
     
+    var clothesTop;
+    var clothesBottom;
+    var clothesShoe;
+
+    var topCategories = ['outerwear', 'tshirt'];
+    var bottomCategories = ['pant'];
+    var shoeCategories = ['shoe'];
+
+    clothesTop = new Array();
+
+    for (var i = 0; i < topCategories.length; i++) {
+        clothesTop = clothesTop.concat(retrieveClothingByTag(topCategories[i]));
+    }
+
+    clothesBottom = new Array();
+
+    for (i = 0; i < bottomCategories.length; i++) {
+        clothesBottom = clothesBottom.concat(retrieveClothingByTag(bottomCategories[i]));
+    }
+
+    clothesShoe = new Array();
+
+    for (i = 0; i < shoeCategories.length; i++) {
+        clothesShoe = clothesShoe.concat(retrieveClothingByTag(shoeCategories[i]));
+    }
     
-    favouriteOutfits = [];
-    favouriteNames = [0];
+    
+    favouriteOutfits = [[clothesTop[0], clothesBottom[0], clothesShoe[0]],[clothesTop[1], clothesBottom[1], clothesShoe[2]],[clothesTop[0], clothesBottom[2], clothesShoe[4]]];
+    favouriteNames = [0, 1, 2];
     //favouriteOutfits = result[1];
     
     if (favouriteNames.length < 1) {
@@ -356,9 +382,9 @@ function imageListDisplay (counter) {
             imageBottom.src = "";
             imageShoes.src = "";
             
-            imageTop.setAttribute('class', "image");
-            imageBottom.setAttribute('class', "image");
-            imageShoes.setAttribute('class', "image");
+            imageTop.setAttribute('class', "imageTop");
+            imageBottom.setAttribute('class', "imageBottom");
+            imageShoes.setAttribute('class', "imageShoe");
             
             imageTop.setAttribute('id', "image" + (i * 3));
             imageBottom.setAttribute('id', "image" + ((i * 3) + 1));

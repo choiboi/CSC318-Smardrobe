@@ -230,13 +230,6 @@ function initializer(image, disLimit) {
         clothingNames = listClothes();
     }
     
-    if (filterOptions.length < 1) {
-        $(".backButton").bind('tap click', function(event) {
-            window.location = "smardrobe.html";
-        });
-        return;
-    }
-    
     
     
     /*

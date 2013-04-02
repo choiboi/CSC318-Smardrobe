@@ -49,3 +49,18 @@ root {
     width  : 100%;
     height : auto;
 }
+
+.imageTop {
+	max-width: 95%;
+	max-height: 28%;
+}
+
+.imageBottom {
+	max-width: 95%;
+	max-height: 28%;
+}
+
+.imageShoe {
+	max-width: 95%;
+	max-height: 10%;
+}
