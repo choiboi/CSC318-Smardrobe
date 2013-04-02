@@ -1,4 +1,25 @@
+
+// // This function returns all favourite outfits stored.
 //
+var listFavourites = function() {
+    var favsLocal = jQuery.parseJSON(localStorage[storageKeys.favs]);
+    var outfits = [];
+    var keys = [];
+    
+    for (var key in favsLocal) {
+        if (favsLocal.hasOwnProperty(key)) {
+            var clothesL = favsLocal[key];
+
+            // Go through the list of clothes.
+            outfits.push(clothesL);
+            keys.push(key);
+
+        }
+    }
+    
+    return [keys, outfits];
+}
+
 // This function adds a set of clothes, which users have
 // favourited, in the database which a uniquely created
 // key value.
@@ -282,6 +303,24 @@ var retrieveTagsByClothing = function(clothingFilename) {
     return clothesLocal[clothingFilename];
 };
 
+var listClothes = function() {
+    var clothesLocal = jQuery.parseJSON(localStorage[storageKeys.clothes]);
+    
+    var keys = [];
+    
+    for (var key in clothesLocal) {
+        if (clothesLocal.hasOwnProperty(key)) {
+            var clothesL = favsLocal[key];
+
+            // Go through the list of clothes.
+            keys.push(key);
+
+        }
+    }
+    
+    return keys;
+    
+}
 //
 // This function retrieves all the associated clothes with the
 // specified tag.

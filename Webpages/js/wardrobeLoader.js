@@ -70,7 +70,6 @@ var deleteFunction = function(event) {
         for (var i = 0; i < multiClothes.length; i++) {
             deleteClothing(clothingNames[multiClothes[i] - i]);
             deleteClothingDB(clothingNames[multiClothes[i] - i]);
-            images.splice(multiClothes[i] - i, 1);
             clothingNames.splice(multiClothes[i] - i, 1);
         }
         
@@ -82,7 +81,7 @@ var deleteFunction = function(event) {
             var counter = 0;
             var hasNext;
 
-            if (images.length > 0) {
+            if (clothingNames.length > 0) {
                 hasNext = true;
             } else {
                 hasNext = false;
@@ -107,7 +106,6 @@ var deleteFunction = function(event) {
     } else {
         deleteClothing(clothingNames[selectedImage]);
         deleteClothingDB(clothingNames[selectedImage]);
-        images.splice(selectedImage, 1);
         clothingNames.splice(selectedImage, 1);
         
         for (i = pageNumber; i < maxPages; i++) {
@@ -116,7 +114,7 @@ var deleteFunction = function(event) {
             
         counter = pageNumber;
 
-        if (images.length > (counter + 1) * displayLimit) {
+        if (clothingNames.length > (counter + 1) * displayLimit) {
             hasNext = true;
         } else {
             hasNext = false;
@@ -149,6 +147,12 @@ var cancelFunction = function(event) {
     $("#delete").remove();
     $("#cancel").remove();
     $(".footer").append('<a href="#" data-role="button" id="multiSelect" rel="external" onclick="multiSelectFuntion(); return false">Multi Select</a>');
+    
+    for (var i = 0; i < multiClothes.length; i++) {
+        $("#" + multiClothes[i]).css("opacity", 1);
+    }
+    
+    multiClothes = [];
     
     $("#multiSelect").bind('tap', function(event) {
         multiSelectFunction(event);
@@ -200,11 +204,17 @@ var multiSelectFunction = function(event) {
 function initializer(image, disLimit) {
     displayLimit = disLimit;
     selectedImage = image;
-    filterOptions = ["shoe"];
     
-    for (var i = 0; i < filterOptions.length; i++) {
-        clothingNames = clothingNames.concat(retrieveClothingByTag(filterOptions[i]));
+    if (image == 0) {
+        clothingNames = listClothes();
+    } else {
+        filterOptions = retrieveTagsByClothing(image);
+        for (var i = 0; i < filterOptions.length; i++) {
+            clothingNames = clothingNames.concat(retrieveClothingByTag(filterOptions[i]));
+        }
     }
+    
+    
     /*
     for (i = 0; i < clothingNames.length; i++) {
         //alert(clothingNames[i]);
